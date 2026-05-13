@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pivot Point — Персонал</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#f7ece7;
+    --card:#ffffff;
+    --dark:#0a0a0a;
+    --red:#b9121b;
+    --red2:#d42c35;
+    --accent:#f0ba98;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#f8efea 0%,#f3e5de 100%);
+    color:var(--dark);
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px 45px;
+
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-text h1{
+    font-size:29px;
+    font-weight:850;
+    letter-spacing:1px;
+}
+
+.logo-text span{
+    font-size:13px;
+    color:#555;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#111;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--red);
+}
+
+.active {
+
+    color:var(--red);
+}
+
+.btn{
+    background:linear-gradient(135deg,var(--red),var(--red2));
+    color:white;
+    padding:12px 24px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
+
+    box-shadow:0 10px 25px rgba(185,18,27,0.22);
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+     color:white;
+}
+
+/* HERO */
+
+.hero{
+    max-width:1450px;
+    margin:40px auto;
+    padding:0 45px;
+}
+
+.creative-hero{
+    background:rgba(255,255,255,0.75);
+
+    border-radius:40px;
+
+    overflow:hidden;
+
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+
+    height:700px;
+
+    border:1px solid rgba(240,186,152,0.35);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,0.12);
+}
+
+.hero-right{
+    padding:40px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.mini-badge{
+    width:max-content;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    background:#fff3ed;
+
+    color:var(--red);
+
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+
+    margin-bottom:24px;
+}
+
+.hero-right h1{
+    font-size:48px;
+    line-height:1.05;
+    margin-bottom:24px;
+}
+
+.hero-right p{
+    color:#666;
+    font-size:19px;
+    line-height:1.9;
+    max-width:620px;
+}
+
+.hero-stats{
+    display:flex;
+    gap:40px;
+    margin-top:40px;
+}
+
+.hero-stats div{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.hero-stats strong{
+    font-size:42px;
+    color:var(--red);
+}
+
+.hero-stats span{
+    color:#666;
+    font-size:14px;
+}
+
+.hero-left{
+    position:relative;
+}
+
+.hero-left img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+.quote-block{
+    max-width:900px;
+    margin:80px auto;
+
+    text-align:center;
+}
+
+.quote-block p{
+    font-size:34px;
+    line-height:1.7;
+
+    color:#222;
+
+    font-weight:500;
+}
+
+/* STAFF */
+
+.staff-section{
+    max-width:1450px;
+    margin:auto;
+    padding:10px 45px 120px;
+}
+
+.staff-grid{
+    display:flex;
+    flex-direction:column;
+    gap:45px;
+}
+
+.staff-card{
+    background:rgba(255,255,255,0.82);
+
+    border-radius:36px;
+
+    overflow:hidden;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    height:480px;
+
+    border:1px solid rgba(240,186,152,0.35);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.08);
+
+    transition:0.35s;
+}
+
+.staff-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 30px 70px rgba(0,0,0,0.14);
+}
+
+.staff-card.reverse .staff-photo{
+    order:2;
+}
+
+.staff-card.reverse .staff-content{
+    order:1;
+}
+
+.staff-photo{
+    position:relative;
+    overflow:hidden;
+}
+
+.staff-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.staff-card:hover img{
+    transform:scale(1.05);
+}
+
+.staff-content{
+    padding:38px;
+
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.staff-role{
+    color:var(--red);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:16px;
+}
+
+.staff-content h2{
+    font-size:34px;
+    margin-bottom:18px;
+    line-height:1.1;
+}
+
+.staff-age{
+    font-size:18px;
+    color:#666;
+    margin-bottom:24px;
+    font-weight:600;
+}
+
+.staff-content p{
+    color:#555;
+    line-height:1.7;
+    font-size:15px;
+
+    display:-webkit-box;
+    
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+
+    min-height:210px;
+
+    margin-bottom:28px;
+}
+
+.staff-tags{
+    display:flex;
+
+    margin-top:auto;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.staff-tags span{
+    background:#fff4ef;
+
+    border:1px solid rgba(185,18,27,0.15);
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    font-size:14px;
+    font-weight:600;
+
+    color:var(--red);
+}
+
+/* FOOTER */
+
+footer{
+    background:#0a0a0a;
+    color:white;
+
+    padding:70px 45px 25px;
+}
+
+.footer-content{
+    max-width:1400px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+    padding-bottom:40px;
+}
+
+.footer-column{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.footer-column h3{
+    font-size:28px;
+}
+
+.footer-column h4{
+    font-size:18px;
+}
+
+.footer-column p,
+.footer-column a{
+    color:#aaa;
+    text-decoration:none;
+    line-height:1.8;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:20px;
+    text-align:center;
+    color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .staff-card,
+    .staff-card.reverse{
+        grid-template-columns:1fr;
+    }
+
+    .staff-card.reverse .staff-photo,
+    .staff-card.reverse .staff-content{
+        order:unset;
+    }
+
+    .staff-photo{
+        height:380px;
+    }
+
+    
+
+    .staff-content{
+        padding:35px 28px;
+    }
+
+    .staff-content h2{
+        font-size:32px;
+    }
+
+    .staff-content p{
+        font-size:15px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+    }
+}
+
+/* BURGER */
+
+.burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.burger span{
+    width:26px;
+    height:3px;
+    background:#111;
+    border-radius:10px;
+}
+
+/* TABLET */
+
+@media(max-width:1000px){
+
+    .creative-hero{
+        grid-template-columns:1fr;
+        height:auto;
+    }
+
+    .hero-left{
+        height:420px;
+    }
+
+    .hero-right{
+        padding:40px 30px;
+    }
+
+    .hero-right h1{
+        font-size:40px;
+    }
+
+    .hero-right p{
+        font-size:17px;
+    }
+
+    .hero-stats{
+        flex-wrap:wrap;
+        gap:24px;
+    }
+
+    .staff-card,
+    .staff-card.reverse{
+        grid-template-columns:1fr;
+        height:auto;
+    }
+
+    .staff-card.reverse .staff-photo,
+    .staff-card.reverse .staff-content{
+        order:unset;
+    }
+
+    .staff-photo{
+        height:360px;
+    }
+
+    .staff-content{
+        padding:32px 26px;
+    }
+
+    .staff-content h2{
+        font-size:30px;
+    }
+
+    .staff-content p{
+        min-height:auto;
+    }
+
+    .footer-content{
+        grid-template-columns:repeat(2,1fr);
+        gap:30px;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    header{
+        padding:16px 20px;
+    }
+
+    .burger{
+        display:flex;
+    }
+
+    nav{
+        position:absolute;
+        top:90px;
+        left:0;
+        width:100%;
+
+        background:white;
+
+        flex-direction:column;
+        align-items:flex-start;
+
+        padding:25px;
+
+        gap:20px;
+
+        display:none;
+
+        box-shadow:0 15px 35px rgba(0,0,0,0.08);
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    .hero{
+        padding:0 20px;
+        margin:25px auto;
+    }
+
+    .creative-hero{
+        border-radius:28px;
+    }
+
+    .hero-left{
+        height:300px;
+    }
+
+    .hero-right{
+        padding:28px 22px;
+    }
+
+    .mini-badge{
+        font-size:11px;
+        padding:10px 14px;
+    }
+
+    .hero-right h1{
+        font-size:32px;
+        line-height:1.15;
+    }
+
+    .hero-right p{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+    .hero-stats{
+        gap:18px;
+        margin-top:28px;
+    }
+
+    .hero-stats strong{
+        font-size:30px;
+    }
+
+    .hero-stats span{
+        font-size:12px;
+    }
+
+    .quote-block{
+        margin:55px auto;
+        padding:0 20px;
+    }
+
+    .quote-block p{
+        font-size:24px;
+        line-height:1.5;
+    }
+
+    .staff-section{
+        padding:10px 20px 80px;
+    }
+
+    .staff-grid{
+        gap:28px;
+    }
+
+    .staff-card{
+        border-radius:26px;
+    }
+
+    .staff-photo{
+        height:260px;
+    }
+
+    .staff-content{
+        padding:24px 20px;
+    }
+
+    .staff-role{
+        font-size:12px;
+        letter-spacing:1px;
+    }
+
+    .staff-content h2{
+        font-size:24px;
+        margin-bottom:14px;
+    }
+
+    .staff-age{
+        font-size:15px;
+        margin-bottom:18px;
+    }
+
+    .staff-content p{
+        font-size:14px;
+        line-height:1.7;
+        margin-bottom:22px;
+    }
+
+    .staff-tags{
+        gap:10px;
+    }
+
+    .staff-tags span{
+        padding:10px 14px;
+        font-size:12px;
+    }
+
+    footer{
+        padding:60px 20px 25px;
+    }
+
+    .footer-content{
+        grid-template-columns:repeat(2,1fr);
+        gap:24px;
+    }
+
+    .footer-column h3{
+        font-size:24px;
+    }
+
+    .footer-column h4{
+        font-size:16px;
+    }
+
+    .footer-column p,
+    .footer-column a{
+        font-size:14px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:480px){
+
+    .hero-right h1{
+        font-size:28px;
+    }
+
+    .hero-left{
+        height:240px;
+    }
+
+    .staff-photo{
+        height:220px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <div class="logo-text">
+        <h1>PIVOT POINT</h1>
+        <span>Центр дрессировки собак</span>
+    </div>
+
+    <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="nav">
+        <a href="proba.html">ГЛАВНАЯ</a>
+        <a href="services.html">УСЛУГИ</a>
+        <a href="personal.html" class="active">ПЕРСОНАЛ</a>
+        <a href="gallery.html">ГАЛЕРЕЯ</a>
+
+        <a href="shop.html" class="btn">НАШ МАГАЗИН</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="creative-hero">
+
+        
+
+        <div class="hero-left">
+
+           <img src="img/13.jpg" alt="dog">
+
+        </div>
+
+        <div class="hero-right">
+
+<div class="mini-badge">PIVOT POINT TEAM</div>
+
+            <h1>
+                Люди,
+                которые понимают
+                собак с первого взгляда
+            </h1>
+
+            <p>
+                Наши специалисты ежедневно работают
+                с питомцами разных пород, характеров
+                и уровней подготовки.
+            </p>
+
+            <div class="hero-stats">
+
+                <div>
+                    <strong>10+</strong>
+                    <span>специалистов</span>
+                </div>
+
+                <div>
+                    <strong>2500+</strong>
+                    <span>тренировок</span>
+                </div>
+
+                <div>
+                    <strong>98%</strong>
+                    <span>довольных клиентов</span>
+                </div>
+
+            </div>
+
+            
+            
+        </div>
+
+    </div>
+
+</section>
+
+<div class="quote-block">
+
+    <p>
+        «Собака — единственное существо,
+        которое любит вас больше,
+        чем себя.»
+    </p>
+
+</div>
+
+<section class="staff-section">
+
+    <div class="staff-grid">
+
+        <div class="staff-card reverse">
+
+            <div class="staff-photo">
+                <img src="IMG/k1.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">ГЛАВНЫЙ КИНОЛОГ</div>
+
+                <h2>Анна Ковальчук</h2>
+
+                <div class="staff-age">34 года</div>
+
+                <p>
+                    Специалист по коррекции поведения и базовой дрессировке собак. Более 10 лет работает с питомцами разных пород и темпераментов. Помогает владельцам выстраивать доверительные отношения с собакой, обучает правильному взаимодействию дома и на прогулках, а также подбирает индивидуальные программы тренировок.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Дрессировка</span>
+                    <span>Поведение</span>
+                    <span>Социализация</span>
+                </div>
+
+            </div>
+
+        </div>
+
+       <div class="staff-card">
+
+            <div class="staff-photo">
+                <img src="IMG/kk3.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">ВЕТЕРИНАР</div>
+
+                <h2>Максим Орлов</h2>
+
+                <div class="staff-age">41 год</div>
+
+                <p>
+                    Проводит диагностику состояния животных, консультирует владельцев по вопросам здоровья и профилактики заболеваний. Сопровождает собак во время длительных перевозок и помогает подготовить питомцев к активным тренировкам и соревнованиям.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Ветеринария</span>
+                    <span>Осмотры</span>
+                    <span>Консультации</span>
+                </div>
+
+            </div>
+
+        </div>
+
+       <div class="staff-card reverse">
+
+            <div class="staff-photo">
+                <img src="IMG/k2.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">СПЕЦИАЛИСТ ПО ЩЕНКАМ</div>
+
+                <h2>Екатерина Левченко</h2>
+
+                <div class="staff-age">29 лет</div>
+
+                <p>
+                    Работает с ранней социализацией щенков, обучением первым командам и адаптацией питомцев к городской среде. Помогает владельцам избежать распространённых ошибок в воспитании и формирует у щенков спокойное и уверенное поведение.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Щенки</span>
+                    <span>Адаптация</span>
+                    <span>Обучение</span>
+                </div>
+
+            </div>
+
+        </div>
+
+         <div class="staff-card">
+
+            <div class="staff-photo">
+                <img src="IMG/kk1.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">ТРЕНЕР ПО ЗАЩИТЕ</div>
+
+                <h2>Игорь Руденко</h2>
+
+                <div class="staff-age">38 лет</div>
+
+                <p>
+                    Подготавливает служебных и охранных собак. Специализируется на защитных дисциплинах, развитии выдержки и работе в стрессовых условиях. Использует современные методы подготовки без агрессивного воздействия на питомцев.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Защита</span>
+                    <span>Охрана</span>
+                    <span>Служебные собаки</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="staff-card reverse">
+
+            <div class="staff-photo">
+                <img src="IMG/k3.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">СПЕЦИАЛИСТ ПО ПОВЕДЕНИЮ</div>
+
+                <h2>Дарья Белова</h2>
+
+                <div class="staff-age">27 лет</div>
+
+                <p>
+                    Работает с тревожными и гиперактивными собаками. Помогает питомцам адаптироваться к новым условиям, корректирует проблемное поведение и обучает владельцев правильной коммуникации с собакой в повседневной жизни.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Поведение</span>
+                    <span>Адаптация</span>
+                    <span>Социализация</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="staff-card">
+
+            <div class="staff-photo">
+                <img src="IMG/kk2.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">СПЕЦИАЛИСТ ПО ПЕРЕВОЗКАМ</div>
+
+                <h2>Артём Соколов</h2>
+
+                <div class="staff-age">32 года</div>
+
+                <p>
+                    Отвечает за безопасную перевозку животных по Беларуси и за её пределами. Контролирует комфорт питомцев во время поездок, следит за температурой в салоне и обеспечивает спокойную атмосферу для собак во время транспортировки.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Перевозка</span>
+                    <span>Сопровождение</span>
+                    <span>Безопасность</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="staff-card reverse">
+
+            <div class="staff-photo">
+                <img src="IMG/k4.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">КИНОЛОГ-КОНСУЛЬТАНТ</div>
+
+                <h2>Марина Волкова</h2>
+
+                <div class="staff-age">36 лет</div>
+
+                <p>
+                    Консультирует владельцев по вопросам воспитания собак, подбора физических нагрузок и правильного взаимодействия с питомцем. Помогает выстраивать стабильный режим тренировок и улучшать поведение собаки в городской среде.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Консультации</span>
+                    <span>Воспитание</span>
+                    <span>Коммуникация</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="staff-card">
+
+            <div class="staff-photo">
+                <img src="IMG/kk4.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">ХЕНДЛЕР</div>
+
+                <h2>Олег Миронов</h2>
+
+                <div class="staff-age">31 год</div>
+
+                <p>
+                    Подготавливает собак к выставкам и соревнованиям. Помогает раскрыть потенциал питомца, развивает уверенное поведение в ринге и работает над идеальной подачей собаки перед экспертами.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Выставки</span>
+                    <span>Хендлинг</span>
+                    <span>Подготовка</span>
+                </div>
+
+            </div>
+
+        </div>
+
+         <div class="staff-card reverse">
+
+            <div class="staff-photo">
+                <img src="IMG/k5.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">АДМИНИСТРАТОР</div>
+
+                <h2>Виктория Павлова</h2>
+
+                <div class="staff-age">26 лет</div>
+
+                <p>
+                    Организует работу центра, помогает клиентам с записью на услуги и координирует взаимодействие между специалистами. Следит за качеством обслуживания и комфортом посетителей центра.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Клиенты</span>
+                    <span>Организация</span>
+                    <span>Поддержка</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="staff-card">
+
+            <div class="staff-photo">
+                <img src="IMG/kk5.jpg" alt="staff">
+            </div>
+
+            <div class="staff-content">
+
+                <div class="staff-role">ТРЕНЕР ПО АДЖИЛИТИ</div>
+
+                <h2>Дмитрий Карпенко</h2>
+
+                <div class="staff-age">33 года</div>
+
+                <p>
+                    Тренирует собак для спортивных дисциплин и соревнований по аджилити. Помогает развивать выносливость, скорость, концентрацию и уверенное прохождение препятствий на профессиональном уровне.
+                </p>
+
+                <div class="staff-tags">
+                    <span>Аджилити</span>
+                    <span>Спорт</span>
+                    <span>Тренировки</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-column">
+            <h3>PIVOT POINT</h3>
+            <p>
+                Профессиональный центр
+                дрессировки собак с
+                опытными кинологами.
+            </p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <a href="#">+375 29 999 99 99</a>
+            <a href="#">pivotpoint@gmail.com</a>
+            <a href="#">Minsk, Belarus</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>Социальные сети</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">TikTok</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>Навигация</h4>
+            <a href="proba.html">Главная</a>
+            <a href="services.html">Услуги</a>
+            <a href="personal.html">Персонал</a>
+            <a href="gallery.html">Галерея</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Pivot Point. Все права защищены.
+    </div>
+
+</footer>
+
+<script>
+
+const burger = document.getElementById('burger');
+const nav = document.querySelector('nav');
+
+burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+
+</script>
+
+</body>
+</html>

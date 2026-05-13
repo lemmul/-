@@ -1,0 +1,3224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pivot Point</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#f7ece7;
+    --card:#ffffff;
+    --dark:#0a0a0a;
+    --red:#b9121b;
+    --red2:#d42c35;
+    --accent:#f0ba98;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#f8efea 0%,#f3e5de 100%);
+    color:var(--dark);
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px 45px;
+
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-text h1{
+    font-size:29px;
+    font-weight:850;
+    letter-spacing:1px;
+}
+
+.logo-text span{
+    font-size:13px;
+    color:#555;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#111;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--red);
+}
+
+.active {
+
+    color:var(--red);
+}
+
+.btn{
+    background:linear-gradient(135deg,var(--red),var(--red2));
+    color:white;
+    padding:12px 24px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
+
+    box-shadow:0 10px 25px rgba(185,18,27,0.22);
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 30px rgba(185,18,27,0.35);
+    color:white;
+}
+
+/* BURGER */
+
+.burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.burger span{
+    width:26px;
+    height:3px;
+    background:#111;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+/* HERO */
+
+.hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+
+    max-width:1400px;
+    margin:auto;
+
+    padding:25px 45px;
+}
+
+.hero-left{
+    background:
+    radial-gradient(circle at bottom right, rgba(185,18,27,0.6), transparent 30%),
+    linear-gradient(160deg,#000,#140909);
+
+    color:white;
+
+    padding:28px;
+
+    border-radius:26px;
+
+    min-height:700px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.rating{
+    color:#f4b84c;
+    font-size:24px;
+    margin-bottom:14px;
+}
+
+.stat{
+    font-size:52px;
+    font-weight:800;
+}
+
+.stat-text{
+    opacity:0.7;
+    margin-bottom:22px;
+    font-size:16px;
+}
+
+.hero-left h2{
+    font-size:46px;
+    line-height:1.05;
+    margin-bottom:18px;
+    font-weight:800;
+}
+
+.hero-left p{
+    font-size:18px;
+    line-height:1.5;
+    opacity:0.85;
+    max-width:500px;
+}
+
+.hero-left .btn{
+    margin-top:26px;
+    width:max-content;
+}
+
+.hero-right{
+    position:relative;
+    min-height:700px;
+    border-radius:26px;
+    overflow:hidden;
+}
+
+
+.hero-right img{
+    width:100%;
+   
+    object-fit:cover;
+    border-radius:26px;
+     height: 100%;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   DOG MODE
+========================= */
+
+img{
+    transition:0.5s;
+}
+
+body.dog-mode img{
+
+    transform:scale(1.03);
+
+    filter:
+    saturate(1.2)
+    contrast(1.08);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.18);
+}
+
+/* floating message */
+
+.dog-mode-text{
+    position:fixed;
+
+    top:30px;
+    left:50%;
+
+    transform:
+    translateX(-50%)
+    translateY(-20px);
+
+    background:#111;
+
+    color:white;
+
+    padding:18px 30px;
+
+    border-radius:18px;
+
+    font-size:18px;
+    font-weight:700;
+
+    opacity:0;
+
+    transition:0.4s;
+
+    z-index:10000;
+}
+
+/* videos */
+
+/* =========================
+   MEDIA VIDEO SYSTEM
+========================= */
+
+.media-block{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.media-block img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* VIDEO */
+
+.hidden-video{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
+/* ACTIVE */
+
+.media-block.active-video img{
+
+    opacity:0;
+
+    transform:scale(1.03);
+}
+
+.media-block.active-video .hidden-video{
+
+    opacity:1;
+
+    transform:scale(1.02);
+}
+
+/* DOG MODE */
+
+body.dog-mode .media-block{
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.2);
+}
+
+/* MESSAGE */
+
+
+
+.dog-mode-text.active{
+
+    opacity:1;
+
+    transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+
+/* ABOUT */
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    max-width:1400px;
+    margin:60px auto;
+
+    padding:0 45px;
+
+    position:relative;
+}
+
+/* divider */
+
+.about::before{
+    content:"";
+
+    position:absolute;
+
+    top:-40px;
+    left:45px;
+
+    width:calc(100% - 90px);
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,0,0,0.08),
+        transparent
+    );
+}
+
+.about-wrapper{
+    display:grid;
+    grid-template-columns:320px 1fr;
+
+    gap:30px;
+
+    align-items:stretch;
+}
+
+/* IMAGE */
+
+.about-image{
+    position:relative;
+
+   
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.14);
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:0.6s;
+}
+
+.about-image:hover img{
+    transform:scale(1.04);
+}
+
+/* BADGE */
+
+.about-badge{
+    position:absolute;
+
+    left:35px;
+    bottom:35px;
+
+    background:rgba(255,255,255,0.14);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.18);
+
+    border-radius:26px;
+
+    padding:26px 34px;
+
+    color:white;
+
+    box-shadow:0 15px 35px rgba(0,0,0,0.18);
+}
+
+.about-badge h3{
+    font-size:72px;
+    line-height:1;
+
+    margin-bottom:10px;
+
+    font-weight:800;
+}
+
+.about-badge p{
+    font-size:22px;
+
+    opacity:0.9;
+}
+
+/* CONTENT */
+
+.about-content{
+    position:relative;
+    height: 700px;
+
+    background:
+    radial-gradient(circle at top right,
+    rgba(185,18,27,0.12),
+    transparent 35%),
+
+    rgba(255,255,255,0.65);
+
+    border:1px solid rgba(240,186,152,0.4);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:34px;
+
+    padding:55px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 45px rgba(0,0,0,0.08);
+}
+
+/* decor */
+
+.about-decor{
+    width:120px;
+    height:4px;
+
+    background:linear-gradient(
+        90deg,
+        var(--red),
+        transparent
+    );
+
+    border-radius:999px;
+
+    margin-bottom:28px;
+}
+
+/* title */
+
+.about-title{
+    font-size:58px;
+    line-height:1.05;
+
+    margin-bottom:34px;
+
+    font-weight:800;
+
+    color:#111;
+}
+
+.about-title span{
+    color:var(--red);
+}
+
+/* text */
+
+.about-text{
+    display:flex;
+    flex-direction:column;
+    gap:19px;
+
+    margin-bottom:50px;
+}
+
+.about-text p{
+    font-size:18px;
+    line-height:2;
+
+    color:#4c4c4c;
+}
+
+/* STATS */
+
+.about-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+}
+
+.about-stat{
+    height: 120px;
+    width: auto;
+    background:white;
+
+    border:1px solid rgba(240,186,152,0.45);
+
+    border-radius:26px;
+
+    padding:15px 20px;
+
+    transition:0.35s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.about-stat:hover{
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,0.1);
+}
+
+.about-stat h3{
+    font-size:38px;
+
+    margin-bottom:4px;
+
+    color:var(--red);
+
+    font-weight:800;
+}
+
+.about-stat p{
+    color:#555;
+
+    line-height:1.7;
+
+    font-size:15px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1200px){
+
+    .about-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .about-image{
+        min-height:520px;
+    }
+}
+
+@media(max-width:768px){
+
+    .about{
+        padding:0 20px;
+        margin:60px auto;
+    }
+
+    .about::before{
+        left:20px;
+        width:calc(100% - 40px);
+    }
+
+    .about-content{
+        padding:34px 24px;
+    }
+
+    .about-title{
+        font-size:42px;
+    }
+
+    .about-text p{
+        font-size:17px;
+        line-height:1.8;
+    }
+
+    .about-stats{
+        grid-template-columns:1fr;
+    }
+
+    .about-image{
+        min-height:380px;
+    }
+
+    .about-badge{
+        left:20px;
+        bottom:20px;
+
+        padding:18px 24px;
+    }
+
+    .about-badge h3{
+        font-size:46px;
+    }
+
+    .about-badge p{
+        font-size:16px;
+    }
+}
+
+/* SERVICES */
+
+.services{
+    max-width:1400px;
+    margin:auto;
+
+    padding:0 45px 80px;
+}
+
+.section-title{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.section-sub{
+    font-size:16px;
+    color:#666;
+    margin-bottom:28px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.card{
+    background:rgba(255,255,255,0.75);
+
+    border:1px solid rgba(240,186,152,0.5);
+
+    border-radius:22px;
+
+    padding:24px 20px;
+
+    min-height:160px;
+
+    transition:0.3s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+.icon{
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    background:#fdf1ec;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    margin-bottom:18px;
+}
+
+.card h4{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+    line-height:1.6;
+    color:#666;
+}
+
+/* ADVANTAGES */
+
+.advantages{
+    max-width:1400px;
+    height: 700px;
+    margin:auto;
+
+    padding:90px 45px;
+
+    background:linear-gradient(135deg, var(--red), var(--red2));
+
+    border-radius:34px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.advantages::before{
+    content:"";
+
+    position:absolute;
+
+    top:-200px;
+    right:-200px;
+
+    width:500px;
+    height:500px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,140,0,0.12),
+        transparent 70%
+    );
+}
+
+/* HEADER */
+
+.advantages-header{
+    margin-bottom:20px;
+
+    position:relative;
+    z-index:2;
+}
+
+.advantages-line{
+    width:370px;
+    height:4px;
+
+    background:linear-gradient(90deg, var(--dark), transparent);
+
+    border-radius:30px;
+
+    margin-bottom:24px;
+}
+
+.advantages-header h2{
+    font-size:52px;
+    line-height:1.1;
+
+    color:white;
+
+    font-weight:800;
+}
+
+/* GRID */
+
+.advantages-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:28px;
+
+    position:relative;
+    z-index:2;
+}
+
+/* CARD */
+
+.adv-box{
+    position:relative;
+
+    height:210px;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    background:radial-gradient(circle at right center, rgba(185, 18, 27, 0.6), transparent 25%), linear-gradient(160deg, #000, #160808);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    transition:0.35s;
+
+    padding:20px;
+}
+
+.adv-box:hover{
+    transform:translateY(-6px);
+
+    border-color:rgba(255,149,0,0.3);
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.45);
+}
+
+/* BIG CARD */
+
+.adv-wide{
+    grid-column:span 2;
+}
+
+/* NUMBER */
+
+.adv-number{
+    position:absolute;
+
+    top:10px;
+    left:15px;
+
+    font-size:70px;
+    font-weight:800;
+
+    color:rgba(255, 255, 255, 0.189);
+
+    line-height:1;
+}
+
+/* CONTENT */
+
+.adv-content{
+    position:relative;
+    z-index:2;
+
+    margin-top:30px;
+}
+
+
+/* TEXT */
+
+.adv-box h3{
+    color:white;
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+}
+
+.adv-box p{
+    color:rgba(255,255,255,0.72);
+
+    line-height:1.3;
+
+    font-size:18px;
+}
+
+/* IMAGE */
+
+.adv-image{
+    position:relative;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    height:230px;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    background:#111;
+
+    transition:0.35s;
+}
+
+.adv-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:0.5s;
+}
+
+.adv-image:hover{
+    transform:translateY(-6px);
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.45);
+}
+
+.adv-image:hover img{
+    transform:scale(1.05);
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+    .advantages-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .adv-wide{
+        grid-column:span 2;
+    }
+}
+
+@media(max-width:768px){
+
+    .advantages{
+        padding:60px 20px;
+    }
+
+    .advantages-grid{
+        grid-template-columns:1fr;
+    }
+
+    .adv-wide{
+        grid-column:span 1;
+    }
+
+    .advantages-header h2{
+        font-size:36px;
+    }
+
+    .adv-box{
+        min-height:auto;
+        padding:28px;
+    }
+
+    .adv-number{
+        font-size:100px;
+    }
+
+    .adv-content{
+        margin-top:65px;
+    }
+
+    .adv-box h3{
+        font-size:24px;
+    }
+
+    .adv-image{
+        min-height:260px;
+    }
+}
+
+@media(max-width:500px){
+
+    .advantages-header h2{
+        font-size:30px;
+    }
+
+    .adv-number{
+        font-size:80px;
+    }
+
+    .adv-box p{
+        font-size:15px;
+    }
+}
+/* REVIEWS */
+
+.reviews{
+    max-width:1400px;
+    margin:auto;
+
+    padding:90px 45px;
+}
+.reviews-flex{
+    display:flex;
+    gap:28px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    padding:10px 10px 20px;
+
+    margin-top:20px;
+
+    scroll-behavior:smooth;
+}
+
+/* скролл */
+
+.reviews-flex::-webkit-scrollbar{
+    height:10px;
+}
+
+.reviews-flex::-webkit-scrollbar-track{
+    background:#eaded8;
+    border-radius:20px;
+}
+
+.reviews-flex::-webkit-scrollbar-thumb{
+    background:#c58f7a;
+    border-radius:20px;
+}
+
+/* карточка */
+
+.review-card{
+    width:325px;
+    height:450px;
+
+    flex-shrink:0;
+
+    background:rgba(255,255,255,0.82);
+
+    border:1px solid rgba(240,186,152,0.45);
+
+    border-radius:28px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    transition:0.3s;
+
+    overflow:hidden;
+}
+
+.review-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,0.08);
+}
+
+/* текст */
+
+.review-text{
+    font-size:15px;
+    line-height:1.5;
+
+    color:#555;
+
+    overflow:hidden;
+
+    display:-webkit-box;
+    
+    -webkit-box-orient:vertical;
+
+    word-break:break-word;
+}
+
+.review-stars{
+    color:#f4b84c;
+
+    font-size:25px;
+
+    margin-bottom:18px;
+}
+
+.review-text{
+    font-size:13px;
+    line-height:1.4;
+
+    color:#555;
+
+    margin-bottom:24px;
+}
+
+.review-user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    
+}
+
+
+.review-user h4{
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.review-user span{
+    font-size:13px;
+    color:#777;
+}
+.review-user::before{
+
+    content:"";
+
+    width: 7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#b31217;
+
+    display:block;
+
+    margin-bottom:10px;
+}
+
+
+/* FAQ */
+
+.faq{
+    max-width:1400px;
+    margin:auto;
+
+    padding:0 45px 90px;
+}
+
+.faq-container{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.faq-item{
+    background:rgba(255,255,255,0.75);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(240,186,152,0.5);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.faq-question{
+    width:100%;
+
+    background:none;
+    border:none;
+
+    padding:24px;
+
+    font-size:18px;
+    font-weight:700;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    cursor:pointer;
+
+    color:#111;
+}
+
+.faq-question span{
+    font-size:24px;
+    color:var(--red);
+}
+
+.faq-answer{
+    max-height:0;
+    overflow:hidden;
+
+    transition:0.4s ease;
+}
+
+.faq-answer p{
+    padding:0 24px 24px;
+    color:#666;
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* =========================
+   ASK QUESTION
+========================= */
+
+/* =========================
+   ASK QUESTION
+========================= */
+
+.ask-question{
+
+
+    position:relative;
+
+    margin:45px auto 90px;
+
+    max-width:1200px;
+
+    min-height:520px;
+
+    border-radius:32px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:60px 35px;
+
+    background:
+    url('IMG/q.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+.ask-video{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    transition:0.6s;
+
+    z-index:0;
+}
+
+.ask-video.active{
+
+    opacity:1;
+}
+
+/* overlay */
+
+.ask-question-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(15,15,15,0.72),
+        rgba(35,15,15,0.72)
+    );
+
+}
+
+/* content */
+
+.ask-question-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:680px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:white;
+}
+
+/* title */
+
+.ask-question-content h2{
+
+    font-size:62px;
+
+    line-height:1;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+    color:#fff5f2;
+}
+
+/* text */
+
+.ask-question-content p{
+
+    font-size:18px;
+
+    line-height:1.5;
+
+    color:
+    rgba(255,240,235,0.78);
+
+    margin-bottom:35px;
+}
+
+/* FORM */
+
+.question-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+}
+
+/* inputs */
+
+.question-form input,
+.question-form textarea{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:
+    rgba(255,255,255,0.12);
+
+    color:white;
+
+    padding:18px 22px;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    backdrop-filter:blur(14px);
+
+    transition:0.3s;
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+}
+
+/* focus */
+
+.question-form input:focus,
+.question-form textarea:focus{
+
+    background:
+    rgba(255,255,255,0.16);
+
+    border:
+    1px solid rgba(255,120,120,0.35);
+
+    box-shadow:
+    0 0 25px rgba(255,120,120,0.12);
+}
+
+/* textarea */
+
+.question-form textarea{
+
+    min-height:130px;
+
+    resize:none;
+}
+
+/* placeholders */
+
+.question-form input::placeholder,
+.question-form textarea::placeholder{
+
+    color:
+    rgba(255,255,255,0.5);
+}
+
+/* button */
+
+.question-form button{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff6b57,
+        #c71f37
+    );
+
+    transition:0.35s;
+}
+
+/* hover */
+
+.question-form button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 14px 35px rgba(199,31,55,0.35);
+}
+
+/* adaptive */
+
+@media(max-width:768px){
+
+    .ask-question{
+
+        margin:35px auto 70px;
+
+        padding:50px 22px;
+
+        min-height:auto;
+
+        border-radius:24px;
+    }
+
+    .ask-question-content h2{
+
+        font-size:42px;
+    }
+
+    .ask-question-content p{
+
+        font-size:16px;
+    }
+
+}
+
+/* FOOTER */
+
+footer{
+    background:#0a0a0a;
+    color:white;
+
+    padding:70px 45px 25px;
+}
+
+.footer-content{
+    max-width:1400px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+    padding-bottom:40px;
+}
+
+.footer-column{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.footer-column h3{
+    font-size:28px;
+}
+
+.footer-column h4{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.footer-column p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+.footer-column a{
+    text-decoration:none;
+    color:#aaa;
+
+    transition:0.3s;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+
+    padding-top:20px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .reviews-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-left h2{
+        font-size:38px;
+    }
+}
+
+@media(max-width:768px){
+
+    header{
+        padding:16px 20px;
+    }
+
+    .burger{
+        display:flex;
+    }
+
+    nav{
+        position:absolute;
+        top:90px;
+        left:0;
+        width:100%;
+
+        background:white;
+
+        flex-direction:column;
+        align-items:flex-start;
+
+        padding:25px;
+
+        gap:20px;
+
+        box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+        display:none;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    .hero,
+    .offer,
+    .services,
+    .reviews,
+    .faq{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-left{
+        min-height:auto;
+        padding:24px;
+    }
+
+    .hero-left h2{
+        font-size:32px;
+    }
+
+    .hero-left p{
+        font-size:16px;
+    }
+
+    .stat{
+        font-size:42px;
+    }
+
+    .offer h3{
+        font-size:28px;
+    }
+
+    .offer p{
+        font-size:15px;
+    }
+
+    .section-title{
+        font-size:30px;
+    }
+
+    .logo img{
+        width:50px;
+        height:50px;
+    }
+
+    .logo-text h1{
+        font-size:18px;
+    }
+
+    .logo-text span{
+        font-size:11px;
+    }
+
+    .faq-question{
+        font-size:16px;
+        padding:20px;
+    }
+
+    .faq-answer p{
+        font-size:14px;
+    }
+
+    footer{
+        padding:60px 20px 25px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+}
+
+    /* =========================
+   ULTRA MOBILE ADAPTIVE
+========================= */
+
+@media (max-width:768px){
+
+    html,
+    body{
+        overflow-x:hidden;
+    }
+
+    section,
+    .hero,
+    .about,
+    .services,
+    .advantages,
+    .reviews,
+    .faq,
+    footer{
+        width:100%;
+    }
+
+    .hero,
+    .services,
+    .faq{
+        padding-left:14px !important;
+        padding-right:14px !important;
+    }
+
+    header
+    .reviews{
+        padding:14px 14px;
+    }
+
+    .logo-text h1{
+        font-size:16px;
+    }
+
+    .logo-text span{
+        font-size:10px;
+    }
+
+    nav{
+        top:80px;
+        padding:18px;
+    }
+
+
+    /* =========================
+   HERO ADAPTIVE FIX
+========================= */
+
+@media (max-width:1024px){
+
+    .hero{
+        grid-template-columns:1fr;
+        gap:20px;
+
+        padding:20px;
+    }
+
+    .hero-left,
+    .hero-right{
+        height:auto;
+    }
+
+    .hero-left{
+        min-height:520px;
+    }
+
+    .hero-right,
+    .hero-right img,
+    .hero-right video{
+        height:500px;
+    }
+
+}
+
+/* =========================
+   HERO MOBILE LIKE SCREEN
+========================= */
+
+@media (max-width:768px){
+
+    .hero{
+
+        display:flex;
+        flex-direction:column;
+
+        padding:14px;
+
+        gap:0;
+
+        max-width:100%;
+    }
+
+    .hero-left,
+    .hero-right{
+
+        width:100%;
+    }
+
+    /* IMAGE */
+
+    .hero-right{
+
+        order:-1;
+
+        border-radius:34px 34px 0 0;
+
+        overflow:hidden;
+
+        min-height:260px;
+    }
+
+    .hero-right img,
+    .hero-right video{
+
+        width:100%;
+        height:260px !important;
+
+        object-fit:cover;
+
+        border-radius:34px 34px 0 0;
+    }
+
+    /* TEXT BLOCK */
+
+    .hero-left{
+
+        min-height:auto;
+
+        padding:34px 28px;
+
+        border-radius:0 0 34px 34px;
+
+        background:#f3efef;
+
+        color:#111;
+
+        box-shadow:none;
+    }
+
+    .rating{
+        margin-bottom:18px;
+    }
+
+    .stat{
+
+        font-size:52px;
+
+        color:#b9121b;
+
+        margin-bottom:6px;
+    }
+
+    .stat-text{
+
+        font-size:15px;
+
+        color:#666;
+
+        margin-bottom:30px;
+    }
+
+    .hero-left h2{
+
+        font-size:52px;
+
+        line-height:1.05;
+
+        color:#111;
+
+        margin-bottom:24px;
+    }
+
+    .hero-left p{
+
+        font-size:18px;
+
+        line-height:1.7;
+
+        color:#666;
+
+        max-width:100%;
+    }
+
+    .hero-left .btn{
+
+        margin-top:28px;
+
+        width:100%;
+
+        text-align:center;
+
+        border-radius:18px;
+    }
+
+}
+
+/* SMALL PHONES */
+
+@media (max-width:480px){
+
+    .hero{
+        padding:10px;
+    }
+
+    .hero-right{
+
+        min-height:220px;
+    }
+
+    .hero-right img,
+    .hero-right video{
+
+        height:220px !important;
+    }
+
+    .hero-left{
+
+        padding:26px 20px;
+    }
+
+    .hero-left h2{
+
+        font-size:34px;
+    }
+
+    .hero-left p{
+
+        font-size:15px;
+    }
+
+    .stat{
+
+        font-size:40px;
+    }
+
+}
+
+    /* ABOUT */
+
+    .about{
+        padding:0 14px;
+        margin:40px auto;
+    }
+
+    .about-wrapper{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+
+    .about-image{
+        min-height:300px;
+        border-radius:24px;
+    }
+
+    .about-content{
+        height:auto;
+        padding:24px 18px;
+        border-radius:24px;
+    }
+
+    .about-title{
+        font-size:34px;
+        margin-bottom:20px;
+    }
+
+    .about-text{
+        gap:14px;
+        margin-bottom:26px;
+    }
+
+    .about-text p{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+    .about-stats{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .about-stat{
+        height:auto;
+        padding:18px;
+    }
+
+    .about-stat h3{
+        font-size:30px;
+    }
+
+    .about-badge{
+        left:14px;
+        bottom:14px;
+        padding:14px 18px;
+    }
+
+    .about-badge h3{
+        font-size:34px;
+    }
+
+    .about-badge p{
+        font-size:14px;
+    }
+
+    /* SERVICES */
+
+    .services{
+        padding-bottom:50px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .card{
+        min-height:auto;
+        padding:20px 18px;
+        border-radius:20px;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+
+    .section-sub{
+        font-size:14px;
+        margin-bottom:20px;
+    }
+
+    /* ADVANTAGES */
+
+    .advantages{
+        height:auto;
+        padding:40px 14px;
+        border-radius:24px;
+    }
+
+    .advantages-header h2{
+        font-size:30px;
+    }
+
+    .advantages-line{
+        width:180px;
+    }
+
+    .advantages-grid{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .adv-wide{
+        grid-column:span 1;
+    }
+
+    .adv-box{
+        height:auto;
+        min-height:190px;
+        padding:18px;
+        border-radius:22px;
+    }
+
+    .adv-number{
+        font-size:72px;
+    }
+
+    .adv-content{
+        margin-top:48px;
+    }
+
+    .adv-box h3{
+        font-size:22px;
+    }
+
+    .adv-box p{
+        font-size:15px;
+        line-height:1.5;
+    }
+
+    .adv-image{
+        height:240px;
+        border-radius:22px;
+    }
+
+    /* REVIEWS */
+
+    .reviews{
+        padding-top:50px;
+        padding-bottom:50px;
+    }
+
+    .reviews-flex{
+        gap:16px;
+        padding-bottom:10px;
+    }
+
+    .review-card{
+        width:260px;
+        height:auto;
+        min-height:340px;
+        padding:18px;
+        border-radius:22px;
+    }
+
+    .review-text{
+        font-size:13px;
+        line-height:1.5;
+    }
+
+    /* FAQ */
+
+    .faq{
+        padding-bottom:50px;
+    }
+
+    .faq-question{
+        padding:18px;
+        font-size:15px;
+        line-height:1.4;
+    }
+
+    .faq-answer p{
+        padding:0 18px 18px;
+        font-size:14px;
+    }
+
+    /* ASK FORM */
+
+    .ask-question{
+        margin:20px 14px 50px;
+        padding:30px 16px;
+        border-radius:24px;
+        min-height:auto;
+    }
+
+    .ask-question-content h2{
+        font-size:34px;
+    }
+
+    .ask-question-content p{
+        font-size:15px;
+        margin-bottom:24px;
+    }
+
+    .question-form{
+        gap:12px;
+    }
+
+    .question-form input,
+    .question-form textarea{
+        padding:15px 16px;
+        font-size:14px;
+        border-radius:14px;
+    }
+
+    .question-form textarea{
+        min-height:110px;
+    }
+
+    .question-form button{
+        padding:16px;
+        font-size:14px;
+        border-radius:14px;
+    }
+
+    /* FOOTER */
+
+    footer{
+        padding:45px 14px 20px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+        gap:24px;
+        padding-bottom:24px;
+    }
+
+    .footer-column h3{
+        font-size:22px;
+    }
+
+    .footer-column h4{
+        font-size:16px;
+    }
+
+    .footer-column p,
+    .footer-column a{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .footer-bottom{
+        font-size:12px;
+    }
+
+}
+
+/* EXTRA SMALL */
+
+@media (max-width:480px){
+
+    .hero-left h2{
+        font-size:24px;
+    }
+
+    .about-title{
+        font-size:28px;
+    }
+
+    .advantages-header h2{
+        font-size:26px;
+    }
+
+    .ask-question-content h2{
+        font-size:28px;
+    }
+
+    .review-card{
+        width:230px;
+    }
+
+}
+
+/* =========================
+   SMALLER IMAGES MOBILE
+========================= */
+
+@media (max-width:768px){
+
+    /* HERO */
+
+    .hero-right,
+    .hero-right img,
+    .hero-right video{
+        height:240px !important;
+    }
+
+    /* ABOUT */
+
+    .about-image{
+        min-height:240px !important;
+        height:240px;
+    }
+
+    .about-image img,
+    .about-image video{
+        height:240px !important;
+    }
+
+    /* ASK QUESTION */
+
+    .ask-question{
+        min-height:380px;
+    }
+
+    .ask-question video{
+        height:100%;
+    }
+
+}
+
+/* EXTRA SMALL */
+
+@media (max-width:480px){
+
+    .hero-right,
+    .hero-right img,
+    .hero-right video{
+        height:200px !important;
+    }
+
+    .about-image{
+        min-height:200px !important;
+        height:200px;
+    }
+
+    .about-image img,
+    .about-image video{
+        height:200px !important;
+    }
+
+    .ask-question{
+        min-height:320px;
+    }
+
+}
+
+/* =========================
+   FIX FORM + FOOTER MOBILE
+========================= */
+
+@media (max-width:768px){
+
+    /* FIX OVERFLOW */
+
+    *{
+        max-width:100%;
+    }
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .ask-question{
+        margin-left:14px;
+        margin-right:14px;
+
+        width:auto;
+
+        overflow:hidden;
+    }
+
+    .ask-question-content{
+        width:100%;
+        max-width:100%;
+    }
+
+    .question-form{
+        width:100%;
+    }
+
+    .question-form input,
+    .question-form textarea,
+    .question-form button{
+        width:100%;
+        min-width:0;
+    }
+
+    /* FOOTER 2 COLUMNS */
+
+    .footer-content{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:24px;
+    }
+
+}
+
+/* VERY SMALL */
+
+@media (max-width:480px){
+
+    .footer-content{
+        gap:18px;
+    }
+
+    .footer-column h3{
+        font-size:20px;
+    }
+
+    .footer-column h4{
+        font-size:15px;
+    }
+
+    .footer-column p,
+    .footer-column a{
+        font-size:13px;
+    }
+
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+        <div class="logo-text">
+            <h1>PIVOT POINT</h1>
+            <span>Центр дрессировки собак</span>
+        </div>
+
+   
+
+    <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="nav">
+        <a href="proba.html" class="active">ГЛАВНАЯ</a>
+        <a href="services.html">УСЛУГИ</a>
+        <a href="personal.html">ПЕРСОНАЛ</a>
+        <a href="gallery.html">ГАЛЕРЕЯ</a>
+
+        <a href="shop.html" class="btn">НАШ МАГАЗИН</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <div class="rating">★★★★★</div>
+
+        <div class="stat">450+</div>
+
+        <div class="stat-text">
+            положительных отзывов от владельцев собак
+        </div>
+
+        <h2>
+            Ваш питомец<br>
+            заслуживает лучшего<br>
+            ухода
+        </h2>
+
+        <p>
+            Мы создаём систему обучения, в которой
+            собака понимает вас с полуслова.
+        </p>
+
+        <a href="#" class="btn" id="woofBtn">
+            WOOF-WOOF!
+        </a>
+
+    </div>
+
+    <div class="hero-right media-block">
+
+    <img src="IMG/w.jpg" alt="dog">
+
+    <video class="hidden-video" muted loop playsinline>
+
+        <source src="GIF/1.mp4" type="video/mp4">
+
+    </video>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<!-- ABOUT -->
+
+<section class="about">
+
+    <div class="about-wrapper">
+
+        <!-- IMAGE -->
+
+        <div class="about-image media-block">
+
+    <img src="IMG/about.jpg" alt="trainer">
+
+    <video class="hidden-video" muted loop playsinline>
+
+        <source src="GIF/2.mp4" type="video/mp4">
+
+    </video>
+
+        
+
+            <div class="about-badge">
+
+                <h3>10+</h3>
+                <p>лет опыта</p>
+
+            </div>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="about-content">
+
+            <div class="about-decor"></div>
+
+            <h2 class="about-title">
+                Кто <span>мы?</span>
+            </h2>
+
+            <div class="about-text">
+
+                <p>
+                    Pivot Point — современный центр дрессировки собак,
+                    где опыт кинологов сочетается с бережным отношением
+                    к каждому питомцу. Мы помогаем владельцам выстроить
+                    правильную коммуникацию с собакой и добиться
+                    комфортного поведения в повседневной жизни.
+                </p>
+
+                <p>
+                    Наша команда работает с собаками любых пород
+                    и возрастов: от щенков до взрослых питомцев
+                    с уже сформированными привычками.
+                    Мы подбираем индивидуальный подход
+                    и создаём программу обучения
+                    под конкретные задачи владельца.
+                </p>
+
+                <p>
+                    Просторная площадка, современные методики,
+                    спокойная атмосфера и постоянная поддержка —
+                    всё это позволяет добиться стабильного
+                    и долгосрочного результата.
+                </p>
+
+            </div>
+
+            <!-- STATS -->
+
+            <div class="about-stats">
+
+                <div class="about-stat">
+
+                    <h3>350+</h3>
+
+                    <p>
+                        собак успешно прошли обучение
+                        в нашем центре
+                    </p>
+
+                </div>
+
+                <div class="about-stat">
+
+                    <h3>98%</h3>
+
+                    <p>
+                        клиентов рекомендуют
+                        нас своим знакомым
+                    </p>
+
+                </div>
+
+                <div class="about-stat">
+
+                    <h3>24/7</h3>
+
+                    <p>
+                        поддержка и рекомендации
+                        для владельцев собак
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="services">
+
+    <h2 class="section-title">
+        Чем мы занимаемся?
+    </h2>
+
+    <p class="section-sub">
+        Профессиональная дрессировка для собак всех пород и возрастов
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">🎓</div>
+
+            <h4>Базовая дрессировка</h4>
+
+            <p>
+                Обучение базовым командам и правильному поведению.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🐕</div>
+
+            <h4>Коррекция поведения</h4>
+
+            <p>
+                Работа с агрессией, страхами и гиперактивностью.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">👥</div>
+
+            <h4>Индивидуальные занятия</h4>
+
+            <p>
+                Персональная программа обучения для вашей собаки.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🐾</div>
+
+            <h4>Подготовка щенков</h4>
+
+            <p>
+                Социализация и обучение щенков с раннего возраста.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ADVANTAGES -->
+
+<section class="advantages">
+
+    <div class="advantages-header">
+
+        <div class="advantages-line"></div>
+
+        <h2>
+            Почему выбирают <span>Pivot Point</span>
+        </h2>
+
+    </div>
+
+    <div class="advantages-grid">
+
+        <!-- 01 -->
+
+        <div class="adv-box">
+
+            <div class="adv-number">01</div>
+
+            <div class="adv-content">
+
+               
+
+                <h3>Опыт работы</h3>
+
+                <p>
+                    Более 10 лет помогаем владельцам
+                    воспитывать послушных и счастливых собак.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 02 -->
+
+        <div class="adv-box">
+
+            <div class="adv-number">02</div>
+
+            <div class="adv-content">
+
+            
+                <h3>Профессиональные кинологи</h3>
+
+                <p>
+                    Работаем с современными методиками
+                    и индивидуальным подходом.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 03 -->
+
+        <div class="adv-box">
+
+            <div class="adv-number">03</div>
+
+            <div class="adv-content">
+
+               
+
+                <h3>Любые породы</h3>
+
+                <p>
+                    Подбираем программу обучения
+                    под характер и возраст собаки.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- IMAGE -->
+
+        <div class="adv-image media-block">
+
+    <img src="IMG/ad.jpg" alt="dog trainer">
+
+    <video class="hidden-video" muted loop playsinline>
+
+        <source src="GIF/3.2.mp4" type="video/mp4">
+
+    </video>
+
+        </div>
+
+        <!-- 04 -->
+
+        <div class="adv-box adv-wide">
+
+            <div class="adv-number">04</div>
+
+            <div class="adv-content">
+
+                
+
+                <h3>Поддержка владельцев</h3>
+
+                <p>
+                    Помогаем не только собаке,
+                    но и обучаем владельца правильной коммуникации.
+                    Консультации, рекомендации и сопровождение
+                    после прохождения курса.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- REVIEWS -->
+
+<section class="reviews">
+
+    <h2 class="section-title">
+        Отзывы клиентов
+    </h2>
+
+    <p class="section-sub">
+        Что говорят владельцы собак о нашей работе
+    </p>
+
+    <div class="reviews-flex">
+
+        <div class="review-card">
+
+            <div class="review-stars">★★★★★</div>
+
+            <p class="review-text">
+                После занятий собака стала намного спокойнее
+                и начала слушаться с первого раза.
+                Огромное спасибо тренерам!
+            </p>
+
+            <div class="review-user">
+
+               
+                    <h4>Анна Смирнова</h4>
+                    <span>Владелец лабрадора</span>
+                
+            </div>
+
+        </div>
+
+         <div class="review-card">
+
+            <div class="review-stars">★★★★★</div>
+
+            <p class="review-text">
+               Огромное спасибо Артёму за реабилитацию моего джека Рассела Кузи! Я уже отчаялась, потому что собака кидалась на всех собак во дворе и рычала на велики. Пробовали другой центр — толку не было. Здесь с нами работали индивидуально. Кузя после месяца занятий спокойно проходит мимо овчарок, а главное — я перестала бояться отпускать поводок. Порадовало, что нас учили не "дрессировке ради галочки", а работе в реальной жизни. Место на парковке есть, в коридоре чисто, есть зона ожидания с печеньками для хозяев. Рекомендую!
+            </p>
+
+            <div class="review-user">
+
+                
+                    <h4>Екатерина Морозова</h4>
+                    <span>Владелец джека рассела</span>
+               
+            </div>
+
+        </div>
+
+        <div class="review-card">
+
+            <div class="review-stars">★★★★★</div>
+
+            <p class="review-text">
+                Очень профессиональный подход.
+                Наш щенок быстро адаптировался и
+                выучил базовые команды всего за несколько занятий.
+            </p>
+
+            <div class="review-user">
+
+                
+                    <h4>Игорь Васильев</h4>
+                    <span>Владелец овчарки</span>
+                
+            </div>
+
+        </div>
+
+        <div class="review-card">
+
+            <div class="review-stars">★★★★★</div>
+
+            <p class="review-text">
+                Лучший центр дрессировки в городе.
+                Отличная атмосфера и внимательное
+                отношение к каждому питомцу.
+            </p>
+
+            <div class="review-user">
+
+               
+                    <h4>Мария Орлова</h4>
+                    <span>Владелец корги</span>
+               
+
+            </div>
+
+        </div>
+        
+
+        <div class="review-card">
+
+            <div class="review-stars">★★★★★</div>
+
+            <p class="review-text">
+               Моему Вене 8 лет, и всю жизнь он был мелким тираном: лаял на всех больших собак аж до хрипоты. В других центрах говорили, что пожилую собаку не переучить. А здесь взялись! Индивидуальные занятия проходили в щадящем режиме. Нам показали, как отвлекать Веню вкусняшкой и менять его реакцию. Сейчас мы спокойно гуляем в парке, где есть крупные собаки. Веня стал реже лаять, а я перестала трястись перед каждой встречей. Спасибо за терпение.
+            </p>
+
+            <div class="review-user">
+
+                
+                    <h4>Людмила Васильева</h4>
+                    <span>Владелец той-терьера</span>
+               
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="faq">
+
+    <h2 class="section-title">
+        Часто задаваемые вопросы
+    </h2>
+
+    <p class="section-sub">
+        Ответы на популярные вопросы наших клиентов
+    </p>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                С какого возраста можно начинать дрессировку?
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Начинать обучение можно уже с 2–3 месяцев.
+                    Щенки быстрее адаптируются и легче усваивают команды.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Сколько длится одно занятие?
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    В среднем одно занятие длится от 60 до 90 минут,
+                    в зависимости от программы обучения.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Можно ли заниматься индивидуально?
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Да, у нас есть персональные занятия с кинологом,
+                    где программа полностью подстраивается под собаку.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Работаете ли вы с агрессивными собаками?
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Да, наши специалисты помогают корректировать
+                    агрессию и нежелательное поведение собак.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="ask-question media-block">
+
+<video class="hidden-video" muted loop playsinline>
+
+    <source src="GIF/4.mp4" type="video/mp4">
+
+</video>
+
+    <div class="ask-question-overlay"></div>
+
+    <div class="ask-question-content">
+
+        <h2>
+            Остались вопросы?
+        </h2>
+
+        <p>
+            Напишите нам — мы поможем подобрать
+            программу обучения и ответим на все вопросы.
+        </p>
+
+        <form class="question-form">
+
+            <input
+                type="text"
+                placeholder="Ваше имя"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Электронная почта"
+                required
+            >
+
+            <textarea
+                placeholder="Ваш вопрос"
+                required
+            ></textarea>
+
+            <button type="submit">
+                ЗАДАТЬ ВОПРОС
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-column">
+
+            <h3>PIVOT POINT</h3>
+
+            <p>
+                Профессиональный центр
+                дрессировки собак с
+                опытными кинологами.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>Контакты</h4>
+
+            <a href="#">+31 999 999 999</a>
+            <a href="#">pivotpoint@gmail.com</a>
+            <a href="#">Amsterdam, Netherlands</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>Социальные сети</h4>
+
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">TikTok</a>
+            <a href="#">Facebook</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>Навигация</h4>
+
+            <a href="proba.html">Главная</a>
+            <a href="services.html">Услуги</a>
+            <a href="personal.html">Персонал</a>
+            <a href="gallery.html">Галерея</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Pivot Point. Все права защищены.
+    </div>
+
+</footer>
+
+<script>
+
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+
+burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+
+    question.addEventListener('click', () => {
+
+        const answer = question.nextElementSibling;
+
+        if(answer.style.maxHeight){
+            answer.style.maxHeight = null;
+        } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+
+    });
+
+});
+
+/* =========================
+   DOG MODE
+========================= */
+
+
+/* message */
+
+
+
+/* видео */
+
+/* =========================
+   DOG MODE
+========================= */
+
+const woofBtn =
+document.getElementById('woofBtn');
+
+const mediaBlocks =
+document.querySelectorAll('.media-block');
+
+/* MESSAGE */
+
+const modeText =
+document.createElement('div');
+
+modeText.className =
+'dog-mode-text';
+
+document.body.appendChild(modeText);
+
+/* TOGGLE */
+
+woofBtn.addEventListener('click', (e) => {
+
+    e.preventDefault();
+
+    document.body.classList.toggle('dog-mode');
+
+    /* ENABLE */
+
+    if(document.body.classList.contains('dog-mode')){
+
+        woofBtn.innerHTML =
+        '🐾 DOG MODE';
+
+        modeText.innerHTML =
+        '🐶 DOG MODE ACTIVATED';
+
+        mediaBlocks.forEach(block => {
+
+            block.classList.add('active-video');
+
+            const video =
+            block.querySelector('video');
+
+            if(video){
+
+                video.play();
+
+            }
+
+        });
+
+    }
+
+    /* DISABLE */
+
+    else{
+
+        woofBtn.innerHTML =
+        'WOOF-WOOF!';
+
+        modeText.innerHTML =
+        '❌ DOG MODE DISABLED';
+
+        mediaBlocks.forEach(block => {
+
+            block.classList.remove('active-video');
+
+            const video =
+            block.querySelector('video');
+
+            if(video){
+
+                video.pause();
+
+                video.currentTime = 0;
+
+            }
+
+        });
+
+    }
+
+    /* MESSAGE */
+
+    modeText.classList.add('active');
+
+    setTimeout(() => {
+
+        modeText.classList.remove('active');
+
+    }, 2200);
+
+});
+
+const form =
+document.querySelector('.question-form');
+
+/* контейнер под формой */
+
+const resultBlock =
+document.createElement('div');
+
+resultBlock.style.marginTop = '30px';
+resultBlock.style.display = 'flex';
+resultBlock.style.flexDirection = 'column';
+resultBlock.style.gap = '16px';
+
+/* вставляем под формой */
+
+form.parentElement.appendChild(resultBlock);
+
+/* submit */
+
+form.addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+    const name =
+    form.querySelector('input[type="text"]').value;
+
+    const email =
+    form.querySelector('input[type="email"]').value;
+
+    const message =
+    form.querySelector('textarea').value;
+
+    /* карточка */
+
+    const card =
+    document.createElement('div');
+
+    card.style.background =
+    'rgba(255,255,255,0.12)';
+
+    card.style.backdropFilter =
+    'blur(10px)';
+
+    card.style.border =
+    '1px solid rgba(255,255,255,0.1)';
+
+    card.style.borderRadius = '18px';
+
+    card.style.padding = '20px';
+
+    card.style.color = 'white';
+
+    card.innerHTML = `
+
+        <h3 style="
+            margin-bottom:10px;
+            font-size:20px;
+        ">
+            ${name}
+        </h3>
+
+        <p style="
+            opacity:0.7;
+            margin-bottom:14px;
+            font-size:14px;
+        ">
+            ${email}
+        </p>
+
+        <p style="
+            line-height:1.6;
+            font-size:16px;
+        ">
+            ${message}
+        </p>
+
+    `;
+
+    /* вставляем под формой */
+
+    resultBlock.prepend(card);
+
+    /* очистка */
+
+    form.reset();
+
+});
+
+
+
+
+
+</script>
+
+</body>
+</html>

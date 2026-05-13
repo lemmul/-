@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pivot Point — Магазин</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#f7ece7;
+--card:#ffffff;
+--dark:#0a0a0a;
+--red:#b9121b;
+--red2:#d42c35;
+--accent:#f0ba98;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top left, rgba(185,18,27,0.08), transparent 25%),
+radial-gradient(circle at bottom right, rgba(212,44,53,0.1), transparent 30%),
+linear-gradient(180deg,#fff6f2 0%,#f5e1d7 45%,#f0d6cb 100%);
+color:var(--dark);
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+position:sticky;
+top:0;
+z-index:3000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 45px;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo-text h1{
+font-size:29px;
+font-weight:900;
+}
+
+.logo-text span{
+font-size:13px;
+color:#555;
+}
+
+nav{
+display:flex;
+gap:30px;
+align-items:center;
+}
+
+nav a{
+text-decoration:none;
+color:#111;
+font-size:14px;
+font-weight:700;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--red);
+}
+
+.btn{
+background:linear-gradient(135deg,var(--red),var(--red2));
+color:white;
+padding:12px 24px;
+border-radius:14px;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+box-shadow:0 10px 25px rgba(185,18,27,0.22);
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+/* BURGER */
+
+.burger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+}
+
+.burger span{
+width:28px;
+height:3px;
+background:#111;
+border-radius:10px;
+transition:.3s;
+}
+
+.mobile-menu{
+position:fixed;
+top:0;
+right:-100%;
+width:100%;
+height:100vh;
+background:#fff;
+z-index:2500;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:30px;
+transition:.4s;
+}
+
+.mobile-menu.active{
+right:0;
+}
+
+.mobile-menu a{
+font-size:24px;
+font-weight:800;
+text-decoration:none;
+color:#111;
+}
+
+.close-menu{
+position:absolute;
+top:25px;
+right:25px;
+font-size:42px;
+cursor:pointer;
+}
+
+/* HERO */
+
+.shop-hero{
+position:relative;
+min-height:650px;
+border-radius:40px;
+overflow:hidden;
+margin:35px auto;
+max-width:1450px;
+display:flex;
+align-items:center;
+padding:80px;
+background:url('IMG/shophero.jpg') center/cover no-repeat;
+}
+
+.shop-hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,rgba(0,0,0,.82),rgba(60,0,0,.55));
+}
+
+.shop-hero-content{
+position:relative;
+z-index:2;
+max-width:720px;
+color:white;
+}
+
+.shop-badge{
+display:inline-block;
+padding:12px 20px;
+border-radius:999px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
+margin-bottom:24px;
+font-weight:700;
+letter-spacing:1px;
+}
+
+.shop-hero h1{
+font-size:82px;
+line-height:.95;
+margin-bottom:25px;
+font-weight:900;
+}
+
+.shop-hero p{
+font-size:20px;
+line-height:1.7;
+opacity:.92;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.hero-outline{
+padding:12px 24px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.25);
+color:white;
+text-decoration:none;
+backdrop-filter:blur(10px);
+}
+
+/* SECTION */
+
+.shop-section{
+max-width:1450px;
+margin:auto;
+padding:20px 45px 100px;
+}
+
+.section-title{
+font-size:56px;
+margin-bottom:10px;
+font-weight:900;
+}
+
+.section-sub{
+color:#666;
+font-size:18px;
+margin-bottom:45px;
+}
+
+/* PRODUCTS */
+
+.products-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.product-card{
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+background:rgba(255,255,255,.8);
+border-radius:30px;
+overflow:hidden;
+transition:.4s;
+cursor:pointer;
+backdrop-filter:blur(12px);
+box-shadow:0 15px 35px rgba(0,0,0,.06);
+}
+
+.product-card:hover{
+transform:translateY(-10px) scale(1.02);
+background:linear-gradient(135deg,var(--red),var(--red2));
+box-shadow:0 25px 50px rgba(185,18,27,.28);
+}
+
+.product-card:hover h3,
+.product-card:hover p,
+.product-card:hover .price,
+.product-card:hover .product-category{
+color:white;
+}
+
+.product-image{
+height:380px;
+overflow:hidden;
+}
+
+.product-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
+}
+
+.product-card:hover img{
+transform:scale(1.08);
+}
+
+.product-info{
+padding:25px;
+}
+
+.product-category{
+font-size:12px;
+color:var(--red);
+font-weight:800;
+margin-bottom:10px;
+letter-spacing:1px;
+}
+
+.product-title{
+font-size:23px;
+margin-bottom:12px;
+font-weight:800;
+}
+
+.product-desc{
+color:#666;
+line-height:1.6;
+font-size:14px;
+margin-bottom:18px;
+}
+
+.product-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+}
+
+.price{
+font-size:28px;
+font-weight:900;
+color:var(--red);
+}
+
+.add-cart{
+border:none;
+background:linear-gradient(135deg,var(--red),var(--red2));
+color:white;
+padding:12px 18px;
+border-radius:14px;
+cursor:pointer;
+font-weight:700;
+}
+
+/* BANNER */
+
+.wide-banner{
+grid-column:1/-1;
+border-radius:36px;
+padding:55px;
+background:
+radial-gradient(circle at right center, rgba(185,18,27,.6), transparent 25%),
+linear-gradient(160deg,#000,#160808);
+box-shadow:0 30px 60px rgba(0,0,0,.18);
+}
+
+.banner-content{
+display:flex;
+gap:40px;
+align-items:center;
+}
+
+.banner-content h2{
+width:35%;
+font-size:34px;
+line-height:1.1;
+color:white;
+font-weight:800;
+}
+
+.banner-content p{
+width:65%;
+font-size:18px;
+line-height:1.9;
+color:rgba(255,255,255,.88);
+}
+
+/* CART */
+
+.cart-toggle{
+position:fixed;
+right:30px;
+bottom:30px;
+width:75px;
+height:75px;
+border-radius:50%;
+background:linear-gradient(135deg,var(--red),var(--red2));
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:32px;
+cursor:pointer;
+z-index:2200;
+box-shadow:0 20px 40px rgba(185,18,27,.35);
+}
+
+.cart-count{
+position:absolute;
+top:-6px;
+right:-4px;
+width:28px;
+height:28px;
+border-radius:50%;
+background:white;
+color:var(--red);
+font-size:14px;
+font-weight:800;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.cart-box{
+display:none;
+position:fixed;
+right:30px;
+bottom:120px;
+width:360px;
+max-height:500px;
+overflow:auto;
+z-index:2200;
+background:white;
+border-radius:28px;
+padding:28px;
+box-shadow:0 25px 60px rgba(0,0,0,.2);
+}
+
+.cart-box h3{
+margin-bottom:20px;
+font-size:28px;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+gap:15px;
+margin-bottom:14px;
+padding-bottom:14px;
+border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.qty-btn{
+width:28px;
+height:28px;
+border:none;
+border-radius:50%;
+background:#f3e5de;
+color:var(--red);
+font-weight:800;
+cursor:pointer;
+}
+
+.checkout-form{
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.checkout-form input{
+padding:15px;
+border:none;
+background:#f4efeb;
+border-radius:14px;
+}
+
+.checkout-btn{
+border:none;
+padding:16px;
+border-radius:14px;
+background:linear-gradient(135deg,var(--red),var(--red2));
+color:white;
+font-weight:700;
+cursor:pointer;
+}
+
+/* MODAL */
+
+.product-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.72);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:5000;
+padding:20px;
+}
+
+.product-modal.active{
+display:flex;
+}
+
+.modal-content{
+width:100%;
+max-width:1150px;
+background:white;
+border-radius:34px;
+overflow:hidden;
+display:grid;
+grid-template-columns:1fr 1fr;
+position:relative;
+animation:modalShow .35s ease;
+}
+
+@keyframes modalShow{
+from{
+opacity:0;
+transform:translateY(40px) scale(.95);
+}
+to{
+opacity:1;
+transform:none;
+}
+}
+
+.modal-gallery{
+height:760px;
+background:#111;
+}
+
+.modal-gallery img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.modal-info{
+padding:55px;
+overflow:auto;
+}
+
+.modal-info h2{
+font-size:54px;
+margin-bottom:18px;
+line-height:1;
+}
+
+.modal-price{
+font-size:40px;
+font-weight:900;
+color:var(--red);
+margin-bottom:25px;
+}
+
+.modal-text{
+font-size:16px;
+line-height:1.9;
+color:#555;
+margin-bottom:35px;
+}
+
+.features{
+display:flex;
+flex-direction:column;
+gap:12px;
+margin-bottom:35px;
+}
+
+.feature{
+background:#f5efeb;
+padding:16px;
+border-radius:14px;
+}
+
+.close-modal{
+position:absolute;
+top:18px;
+right:18px;
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:white;
+font-size:26px;
+cursor:pointer;
+z-index:20;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+/* FOOTER */
+
+footer{
+background:#0a0a0a;
+color:white;
+padding:70px 45px 25px;
+}
+
+.footer-content{
+max-width:1400px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+padding-bottom:40px;
+}
+
+.footer-column{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.footer-column h3{
+font-size:28px;
+}
+
+.footer-column h4{
+font-size:18px;
+}
+
+.footer-column p,
+.footer-column a{
+color:#aaa;
+text-decoration:none;
+line-height:1.7;
+}
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,.1);
+padding-top:20px;
+text-align:center;
+color:#777;
+}
+
+/* ADAPTIVE */
+
+@media(max-width:1200px){
+
+.products-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.modal-content{
+grid-template-columns:1fr;
+max-height:92vh;
+overflow:auto;
+}
+
+.modal-gallery{
+height:500px;
+}
+
+.banner-content{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.banner-content h2,
+.banner-content p{
+width:100%;
+}
+
+}
+
+@media(max-width:768px){
+
+header{
+padding:16px 20px;
+}
+
+nav{
+display:none;
+}
+
+.burger{
+display:flex;
+}
+
+.shop-hero{
+padding:40px 25px;
+min-height:560px;
+margin:15px;
+border-radius:30px;
+}
+
+.shop-hero h1{
+font-size:52px;
+}
+
+.shop-hero p{
+font-size:16px;
+}
+
+.shop-section{
+padding:20px;
+}
+
+.section-title{
+font-size:40px;
+}
+
+.products-grid{
+grid-template-columns:1fr;
+}
+
+.product-image{
+height:320px;
+}
+
+.wide-banner{
+padding:35px 25px;
+}
+
+.banner-content h2{
+font-size:28px;
+}
+
+.banner-content p{
+font-size:16px;
+}
+
+.cart-box{
+width:92%;
+right:4%;
+bottom:105px;
+}
+
+.footer-content{
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.modal-gallery{
+height:360px;
+}
+
+.modal-info{
+padding:28px 22px;
+}
+
+.modal-info h2{
+font-size:36px;
+}
+
+.modal-price{
+font-size:28px;
+}
+
+}
+
+@media(max-width:540px){
+
+.footer-content{
+grid-template-columns:1fr;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.btn,
+.hero-outline{
+width:100%;
+text-align:center;
+}
+
+.cart-toggle{
+width:65px;
+height:65px;
+font-size:28px;
+right:20px;
+bottom:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo-text">
+<h1>PIVOT POINT</h1>
+<span>Центр дрессировки собак</span>
+</div>
+
+<nav>
+<a href="proba.html">ГЛАВНАЯ</a>
+<a href="services.html">УСЛУГИ</a>
+<a href="personal.html">ПЕРСОНАЛ</a>
+<a href="gallery.html">ГАЛЕРЕЯ</a>
+<a href="shop.html" class="btn">МАГАЗИН</a>
+</nav>
+
+<div class="burger" id="burger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</header>
+
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<div class="close-menu" id="closeMenu">
+×
+</div>
+
+<a href="proba.html">ГЛАВНАЯ</a>
+<a href="services.html">УСЛУГИ</a>
+<a href="personal.html">ПЕРСОНАЛ</a>
+<a href="gallery.html">ГАЛЕРЕЯ</a>
+<a href="shop.html">МАГАЗИН</a>
+
+</div>
+
+<!-- HERO -->
+
+<section class="shop-hero">
+
+<div class="shop-hero-content">
+
+<div class="shop-badge">
+PREMIUM DOG STORE
+</div>
+
+<h1>
+Магазин для собак premium-класса
+</h1>
+
+<p>
+Стильные аксессуары, профессиональная амуниция,
+игрушки и всё, что сделает жизнь вашего питомца комфортнее.
+</p>
+
+<div class="hero-buttons">
+<a href="#products" class="btn">СМОТРЕТЬ ТОВАРЫ</a>
+<a href="#" class="hero-outline">НОВИНКИ</a>
+</div>
+
+</div>
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="shop-section" id="products">
+
+<h2 class="section-title">
+Популярные товары
+</h2>
+
+<p class="section-sub">
+Товары, которые чаще всего выбирают владельцы собак
+</p>
+
+<div class="products-grid" id="productsGrid"></div>
+
+</section>
+
+<!-- CART -->
+
+<div class="cart-toggle" id="cartToggle">
+🛒
+<div class="cart-count" id="cartCount">0</div>
+</div>
+
+<div class="cart-box" id="cartBox">
+
+<h3>🛒 Корзина</h3>
+
+<div id="cartItems"></div>
+
+<h2 id="cartTotal">0 BYN</h2>
+
+<form class="checkout-form">
+
+<input type="text" placeholder="ФИО" required>
+
+<input type="text" placeholder="Адрес доставки" required>
+
+<input type="tel" placeholder="Номер телефона" required>
+
+<button class="checkout-btn">
+ОФОРМИТЬ ЗАКАЗ
+</button>
+
+</form>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="product-modal" id="productModal"></div>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<div class="footer-column">
+<h3>PIVOT POINT</h3>
+<p>
+Профессиональный центр дрессировки собак
+с опытными кинологами.
+</p>
+</div>
+
+<div class="footer-column">
+<h4>Контакты</h4>
+<a href="#">+31 999 999 999</a>
+<a href="#">pivotpoint@gmail.com</a>
+<a href="#">Amsterdam, Netherlands</a>
+</div>
+
+<div class="footer-column">
+<h4>Социальные сети</h4>
+<a href="#">Instagram</a>
+<a href="#">Telegram</a>
+<a href="#">TikTok</a>
+<a href="#">Facebook</a>
+</div>
+
+<div class="footer-column">
+<h4>Навигация</h4>
+<a href="proba.html">Главная</a>
+<a href="services.html">Услуги</a>
+<a href="personal.html">Персонал</a>
+<a href="gallery.html">Галерея</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Pivot Point. Все права защищены.
+</div>
+
+</footer>
+
+<script>
+
+/* PRODUCTS */
+
+const products = [
+
+{
+name:'Премиальный поводок',
+price:89,
+image:'IMG/shop1.jpg',
+description:'Мягкий поводок из прочного материала с удобной ручкой.'
+},
+
+{
+name:'Игрушка для собак',
+price:45,
+image:'IMG/shop4.jpg',
+description:'Безопасная игрушка для активных собак.'
+},
+
+{
+name:'Лежанка Premium',
+price:240,
+image:'IMG/shop7.jpg',
+description:'Мягкая лежанка с ортопедическим наполнителем.'
+},
+
+{
+name:'Кожаный ошейник',
+price:75,
+image:'IMG/shop10.jpg',
+description:'Стильный ошейник из натуральной кожи.'
+},
+
+{
+name:'Миски Premium',
+price:60,
+image:'IMG/shop13.jpg',
+description:'Двойная миска для воды и еды.'
+},
+
+{
+name:'Куртка для собак',
+price:110,
+image:'IMG/shop16.jpg',
+description:'Тёплая куртка для прогулок.'
+},
+
+{
+name:'Сумка для лакомств',
+price:38,
+image:'IMG/shop19.jpg',
+description:'Компактная сумка для тренировок.'
+},
+
+{
+name:'Профессиональный намордник',
+price:95,
+image:'IMG/shop22.jpg',
+description:'Удобный намордник с мягкими вставками.'
+}
+
+];
+
+const productsGrid = document.getElementById('productsGrid');
+const cartItems = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+
+let cart = [];
+
+/* RENDER PRODUCTS */
+
+products.forEach((product,index)=>{
+
+const card = document.createElement('div');
+
+card.className = 'product-card';
+
+card.innerHTML = `
+
+<div class="product-image">
+<img src="${product.image}">
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+PREMIUM
+</div>
+
+<h3 class="product-title">
+${product.name}
+</h3>
+
+<p class="product-desc">
+${product.description}
+</p>
+
+<div class="product-bottom">
+
+<div class="price">
+${product.price} BYN
+</div>
+
+<button class="add-cart">
+В КОРЗИНУ
+</button>
+
+</div>
+</div>
+
+`;
+
+/* OPEN MODAL */
+
+card.addEventListener('click',()=>{
+
+const modal = document.getElementById('productModal');
+
+modal.innerHTML = `
+
+<div class="modal-content">
+
+<button class="close-modal">
+×
+</button>
+
+<div class="modal-gallery">
+<img src="${product.image}">
+</div>
+
+<div class="modal-info">
+
+<h2>${product.name}</h2>
+
+<div class="modal-price">
+${product.price} BYN
+</div>
+
+<p class="modal-text">
+
+${product.description}
+
+<br><br>
+
+Этот товар создан для максимального
+комфорта питомца и идеально подходит
+для ежедневного использования.
+
+Высокое качество материалов обеспечивает
+долговечность и безопасность.
+
+</p>
+
+<div class="features">
+
+<div class="feature">
+✔ Высококачественные материалы
+</div>
+
+<div class="feature">
+✔ Подходит для ежедневного использования
+</div>
+
+<div class="feature">
+✔ Рекомендовано кинологами Pivot Point
+</div>
+
+<div class="feature">
+✔ Премиальный комфорт для питомца
+</div>
+
+</div>
+
+<button class="checkout-btn modal-cart-btn">
+ДОБАВИТЬ В КОРЗИНУ
+</button>
+
+</div>
+</div>
+
+`;
+
+modal.classList.add('active');
+
+modal.querySelector('.close-modal')
+.onclick = ()=>{
+modal.classList.remove('active');
+};
+
+modal.onclick = (e)=>{
+if(e.target === modal){
+modal.classList.remove('active');
+}
+};
+
+modal.querySelector('.modal-cart-btn')
+.onclick = ()=>{
+addToCart(product);
+};
+
+});
+
+/* BUTTON */
+
+card.querySelector('.add-cart')
+.addEventListener('click',(e)=>{
+
+e.stopPropagation();
+
+addToCart(product,e.target);
+
+});
+
+productsGrid.appendChild(card);
+
+/* BANNER */
+
+if(index === 3){
+
+const banner = document.createElement('div');
+
+banner.className = 'wide-banner';
+
+banner.innerHTML = `
+
+<div class="banner-content">
+
+<h2>
+🐾 «Сначала мы дрессируем собак.
+Потом собаки дрессируют нас.»
+</h2>
+
+<p>
+
+Каждая игрушка, поводок или лежанка
+в Pivot Point проходит одобрение
+самыми строгими экспертами — собаками.
+
+<br><br>
+
+Если хвост виляет —
+значит товар действительно стоит внимания.
+
+</p>
+
+</div>
+
+`;
+
+productsGrid.appendChild(banner);
+
+}
+
+});
+
+/* CART */
+
+function addToCart(product,btn){
+
+const existing = cart.find(item=>item.name === product.name);
+
+if(existing){
+existing.quantity++;
+}else{
+cart.push({
+...product,
+quantity:1
+});
+}
+
+if(btn){
+
+btn.innerHTML='✔ ДОБАВЛЕНО';
+
+setTimeout(()=>{
+btn.innerHTML='В КОРЗИНУ';
+},700);
+
+}
+
+renderCart();
+
+}
+
+function renderCart(){
+
+cartItems.innerHTML='';
+
+let total = 0;
+
+cart.forEach((item,index)=>{
+
+total += item.price * item.quantity;
+
+const div = document.createElement('div');
+
+div.className='cart-item';
+
+div.innerHTML=`
+
+<div>
+
+<div style="font-weight:700;margin-bottom:8px;">
+${item.name}
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;">
+
+<button onclick="changeQuantity(${index},-1)" class="qty-btn">
+−
+</button>
+
+<span>${item.quantity}</span>
+
+<button onclick="changeQuantity(${index},1)" class="qty-btn">
++
+</button>
+
+</div>
+
+</div>
+
+<strong>
+${item.price * item.quantity} BYN
+</strong>
+
+`;
+
+cartItems.appendChild(div);
+
+});
+
+cartTotal.innerHTML = total + ' BYN';
+
+document.getElementById('cartCount').innerHTML = cart.length;
+
+}
+
+function changeQuantity(index,value){
+
+cart[index].quantity += value;
+
+if(cart[index].quantity <= 0){
+cart.splice(index,1);
+}
+
+renderCart();
+
+}
+
+/* CART TOGGLE */
+
+const cartToggle = document.getElementById('cartToggle');
+const cartBox = document.getElementById('cartBox');
+
+cartToggle.onclick = ()=>{
+
+if(cartBox.style.display === 'block'){
+cartBox.style.display = 'none';
+}else{
+cartBox.style.display = 'block';
+}
+
+};
+
+/* BURGER */
+
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu = document.getElementById('closeMenu');
+
+burger.onclick = ()=>{
+mobileMenu.classList.add('active');
+};
+
+closeMenu.onclick = ()=>{
+mobileMenu.classList.remove('active');
+};
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pivot Point — Услуги</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#f7ece7;
+    --card:#ffffff;
+    --dark:#0a0a0a;
+    --red:#b9121b;
+    --red2:#d42c35;
+    --green:#39ff14;
+    --accent:#f0ba98;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#f8efea 0%,#f3e5de 100%);
+    color:var(--dark);
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px 45px;
+
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-text h1{
+    font-size:29px;
+    font-weight:850;
+    letter-spacing:1px;
+}
+
+.logo-text span{
+    font-size:13px;
+    color:#555;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#111;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--red);
+}
+
+.active {
+
+    color:var(--red);
+}
+
+.btn{
+    background:linear-gradient(135deg,var(--red),var(--red2));
+    color:white;
+    padding:12px 24px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
+
+    box-shadow:0 10px 25px rgba(185,18,27,0.22);
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    color:white;
+    transform:translateY(-2px);
+    box-shadow:0 15px 30px rgba(185,18,27,0.35);
+}
+
+.burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.burger span{
+    width:26px;
+    height:3px;
+    background:#111;
+    border-radius:10px;
+}
+
+/* HERO */
+
+.hero-services{
+    max-width:1400px;
+    margin:40px auto 30px;
+    padding:0 45px;
+}
+
+.hero-box{
+    height:460px;
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.55)),
+    url('IMG/5.jpg');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.18);
+}
+
+.hero-box h2{
+    font-size:58px;
+    margin-bottom:18px;
+    font-weight:800;
+}
+
+.hero-box p{
+    font-size:20px;
+    opacity:0.85;
+    max-width:760px;
+    line-height:1.6;
+}
+
+/* OFFER */
+
+.offer{
+    max-width:1400px;
+    margin:auto;
+
+    padding:0 45px 50px;
+}
+
+.offer-block{
+    background:
+    radial-gradient(circle at right center, rgba(185,18,27,0.6), transparent 25%),
+    linear-gradient(160deg,#000,#160808);
+
+    color:white;
+
+    border-radius:26px;
+
+    padding:28px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.offer-top{
+    display:flex;
+    gap:25px;
+
+    margin-bottom:14px;
+
+    color:#ffcb74;
+    font-weight:700;
+    text-transform:uppercase;
+
+    font-size:12px;
+}
+
+.offer h3{
+    font-size:36px;
+    margin-bottom:14px;
+}
+
+.offer p{
+    font-size:16px;
+    line-height:1.7;
+    opacity:0.85;
+
+    max-width:900px;
+}
+
+/* GRID */
+
+.services-layout{
+    max-width:1400px;
+    margin:auto;
+    padding:30px 45px 90px;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:34px;
+}
+
+.box{
+    height:340px;
+    border-radius:32px;
+    transition:0.35s;
+}
+
+.service-box{
+    background:
+    radial-gradient(circle at top right, rgba(185,18,27,0.12), transparent 35%),
+    rgba(255,255,255,0.82);
+
+    padding:34px;
+
+    cursor:pointer;
+
+    border:1px solid rgba(240,186,152,0.45);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,0.08);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.service-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 55px rgba(0,0,0,0.14);
+
+    background:linear-gradient(135deg, var(--red), var(--red2));
+
+    color:white;
+}
+
+.service-box:hover p,
+.service-box:hover .price{
+    color:white;
+}
+
+.service-box:hover .service-number{
+    color:rgba(255,255,255,0.18);
+}
+
+.service-number{
+    font-size:70px;
+    font-weight:800;
+    color:rgba(185,18,27,0.12);
+    line-height:1;
+}
+
+.service-box h3{
+    font-size:32px;
+    margin:18px 0 14px;
+}
+
+.service-box p{
+    color:#666;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.price{
+    margin-top:24px;
+
+    font-size:22px;
+    font-weight:800;
+
+    color:var(--red);
+}
+
+.image-box{
+    background:#111;
+    overflow:hidden;
+
+    border:1px solid rgba(240,186,152,0.25);
+    position:relative;
+
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.image-box:hover img{
+    transform:scale(1.06);
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,0.65);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:0.3s;
+
+    z-index:9999;
+}
+
+.modal.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-content{
+    width:90%;
+    max-width:650px;
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:38px;
+
+    position:relative;
+
+    animation:popup 0.3s ease;
+}
+
+.service-modal{
+    max-width:1100px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    padding:0;
+
+    overflow:hidden;
+}
+
+.modal-image{
+    height:100%;
+}
+
+.modal-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.modal-info{
+    position:relative;
+
+    padding:50px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.modal-bottom{
+    margin-top:40px;
+
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+.book-btn{
+    height:44px;
+
+    padding:0 34px;
+
+    border:2px solid rgba(185,18,27,0.6);
+
+    background:linear-gradient(135deg, var(--red), var(--red2));
+
+    border-radius:16px;
+
+    font-size:22px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    color:white;
+}
+
+.book-btn:hover{
+    background:var(--red);
+    color:white;
+}
+
+.form-content{
+    max-width:650px;
+}
+
+.booking-form{
+    margin-top:30px;
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.booking-form input{
+    height:62px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(0,0,0,0.08);
+
+    padding:0 20px;
+
+    font-size:16px;
+
+    background:#faf7f5;
+}
+
+.booking-form button{
+    height:64px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,var(--red),var(--red2));
+
+    color:white;
+
+    font-size:16px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.booking-form button:hover{
+    transform:translateY(-2px);
+}
+
+@keyframes popup{
+    from{
+        transform:scale(0.9);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.close-modal{
+    position:absolute;
+    right:22px;
+    top:18px;
+
+    font-size:36px;
+    cursor:pointer;
+    color:#999;
+}
+
+.modal-content h2{
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.modal-content p{
+    color:#555;
+    line-height:1.9;
+    font-size:17px;
+    margin-bottom:18px;
+}
+
+.modal-price{
+    font-size:24px;
+    font-weight:800;
+    color:var(--red);
+}
+
+/* FOOTER */
+
+footer{
+    background:#0a0a0a;
+    color:white;
+
+    padding:70px 45px 25px;
+}
+
+.footer-content{
+    max-width:1400px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+    padding-bottom:40px;
+}
+
+.footer-column{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.footer-column h3{
+    font-size:28px;
+}
+
+.footer-column h4{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.footer-column p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+.footer-column a{
+    text-decoration:none;
+    color:#aaa;
+
+    transition:0.3s;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+
+    padding-top:20px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-box h2{
+        font-size:42px;
+    }
+
+    .hero-box p{
+        font-size:16px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+    }
+
+    .service-modal{
+        grid-template-columns:1fr;
+    }
+
+    .modal-image{
+        height:300px;
+    }
+}
+
+@media(max-width:768px){
+
+    header{
+        padding:16px 20px;
+    }
+
+    .burger{
+        display:flex;
+    }
+
+    nav{
+        position:absolute;
+        top:90px;
+        left:0;
+        width:100%;
+
+        background:white;
+
+        flex-direction:column;
+        align-items:flex-start;
+
+        padding:25px;
+
+        gap:20px;
+
+        display:none;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    .hero-services,
+    .services-layout{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .hero-box{
+        height:auto;
+        padding:40px 20px;
+    }
+
+    .hero-box h2{
+        font-size:34px;
+    }
+
+    .service-box h3{
+        font-size:26px;
+    }
+
+    .service-box p{
+        font-size:15px;
+    }
+
+    footer{
+        padding:60px 20px 25px;
+    }
+}
+
+/* =========================
+   MOBILE ADAPTIVE
+========================= */
+
+@media (max-width:768px){
+
+    html,
+    body{
+        overflow-x:hidden;
+    }
+
+    *{
+        max-width:100%;
+    }
+
+    /* HEADER */
+
+    header{
+        padding:14px;
+    }
+
+    .logo-text h1{
+        font-size:17px;
+    }
+
+    .logo-text span{
+        font-size:10px;
+    }
+
+    nav{
+        top:78px;
+        padding:20px;
+        gap:18px;
+    }
+
+    /* HERO */
+
+    .hero-services{
+        padding:0 14px;
+        margin:20px auto 20px;
+    }
+
+    .hero-box{
+        height:auto;
+        min-height:auto;
+
+        padding:36px 18px;
+
+        border-radius:22px;
+    }
+
+    .hero-box h2{
+        font-size:30px;
+        line-height:1.1;
+    }
+
+    .hero-box p{
+        font-size:15px;
+        line-height:1.6;
+    }
+
+    /* OFFER */
+
+    .offer{
+        padding:0 14px 30px;
+    }
+
+    .offer-block{
+        padding:22px 18px;
+        border-radius:22px;
+    }
+
+    .offer-top{
+        flex-wrap:wrap;
+        gap:10px;
+        font-size:11px;
+    }
+
+    .offer h3{
+        font-size:28px;
+    }
+
+    .offer p{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+    /* SERVICES */
+
+    .services-layout{
+        padding:10px 14px 50px;
+    }
+
+   .services-grid{
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.service-box{
+    min-height:240px;
+    padding:18px 16px;
+}
+
+.service-box h3{
+    font-size:18px;
+    line-height:1.2;
+}
+
+.service-box p{
+    font-size:13px;
+    line-height:1.5;
+}
+
+.service-number{
+    font-size:42px;
+}
+
+.price{
+    font-size:17px;
+    margin-top:14px;
+}
+
+/* IMAGE BOX SAME SIZE AS SERVICES */
+
+.image-box{
+    height:240px;
+    min-height:240px;
+
+    border-radius:24px;
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+    .box{
+        height:auto;
+    }
+
+    .service-box{
+        padding:22px 18px;
+        border-radius:24px;
+        min-height:280px;
+    }
+
+    .service-number{
+        font-size:52px;
+    }
+
+    .service-box h3{
+        font-size:24px;
+        margin:12px 0 10px;
+    }
+
+    .service-box p{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .price{
+        margin-top:18px;
+        font-size:20px;
+    }
+
+    /* MODAL */
+
+    .modal{
+        padding:14px;
+    }
+
+    .modal-content{
+        width:100%;
+        padding:24px 18px;
+        border-radius:24px;
+    }
+
+    .service-modal{
+        grid-template-columns:1fr;
+        overflow-y:auto;
+        max-height:92vh;
+    }
+
+    .modal-image{
+        height:220px;
+    }
+
+    .modal-info{
+        padding:24px 18px 30px;
+    }
+
+    .modal-content h2{
+        font-size:28px;
+        line-height:1.1;
+        margin-bottom:14px;
+    }
+
+    .modal-content p{
+        font-size:14px;
+        line-height:1.7;
+        margin-bottom:14px;
+    }
+
+    .modal-price{
+        font-size:20px;
+    }
+
+    .modal-bottom{
+        margin-top:20px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .close-modal{
+        top:12px;
+        right:16px;
+        font-size:30px;
+    }
+
+    /* FOOTER */
+
+    footer{
+        padding:45px 14px 20px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr 1fr;
+        gap:24px;
+        padding-bottom:24px;
+    }
+
+    .footer-column h3{
+        font-size:20px;
+    }
+
+    .footer-column h4{
+        font-size:15px;
+    }
+
+    .footer-column p,
+    .footer-column a{
+        font-size:13px;
+        line-height:1.6;
+    }
+
+    .footer-bottom{
+        font-size:12px;
+    }
+
+}
+
+/* =========================
+   EXTRA SMALL
+========================= */
+
+@media (max-width:480px){
+
+    .hero-box{
+        padding:28px 16px;
+    }
+
+    .hero-box h2{
+        font-size:24px;
+    }
+
+    .hero-box p{
+        font-size:14px;
+    }
+
+    .offer h3{
+        font-size:24px;
+    }
+
+    .service-box{
+        min-height:250px;
+    }
+
+    .service-box h3{
+        font-size:21px;
+    }
+
+    .service-number{
+        font-size:44px;
+    }
+
+    .image-box{
+        height:180px;
+    }
+
+    .image-box img{
+        height:180px;
+    }
+
+    .modal-image{
+        height:180px;
+    }
+
+    .modal-content h2{
+        font-size:24px;
+    }
+
+    .footer-content{
+        gap:18px;
+    }
+
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+    
+
+
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <div class="logo-text">
+        <h1>PIVOT POINT</h1>
+        <span>Центр дрессировки собак</span>
+    </div>
+
+    <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="nav">
+        <a href="proba.html">ГЛАВНАЯ</a>
+        <a href="services.html" class = "active">УСЛУГИ</a>
+        <a href="personal.html">ПЕРСОНАЛ</a>
+        <a href="gallery.html">ГАЛЕРЕЯ</a>
+
+        <a href="shop.html" class="btn">НАШ МАГАЗИН</a>
+    </nav>
+
+</header>
+
+<section class="hero-services">
+
+    <div class="hero-box">
+
+        <h2>НАШИ УСЛУГИ</h2>
+
+        <p>
+            Воспитываем не просто послушных собак —
+            создаём доверие между хозяином и питомцем.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="offer">
+
+    <div class="offer-block">
+
+        <div class="offer-top">
+            <span>⭐ ИДЕАЛЬНО ДЛЯ СТАРТА</span>
+            <span>📅 ДО 31 ОКТЯБРЯ</span>
+        </div>
+
+        <h3>Первое занятие -20%</h3>
+
+        <p>
+            Новым клиентам скидка 20% на любую услугу.
+            Комфортный подход и забота о вашем питомце.
+            Индивидуальный подход к каждой собаке и помощь
+            профессиональных кинологов с большим опытом.
+        </p>
+
+
+    </div>
+</section>
+
+<section class="services-layout">
+
+    <div class="services-grid">
+
+        <!-- 1 -->
+        <div class="box service-box"
+        data-title="Консультация"
+        data-text="Подробная консультация профессионального кинолога для владельцев собак любых пород и возрастов. Во время встречи специалист анализирует поведение питомца, выявляет возможные проблемы в воспитании и помогает подобрать наиболее эффективную программу тренировок. Вы получите рекомендации по социализации, прогулкам, питанию, взаимодействию с собакой дома и на улице, а также советы по правильному выстраиванию контакта между хозяином и питомцем. Консультация подойдёт как для начинающих владельцев, так и для тех, кто уже сталкивается со сложностями в поведении собаки."
+        data-price="90 BYN за консультацию"
+        data-image="IMG/17.jpg">
+
+            <div class="service-number">01</div>
+
+            <div>
+                <h3>Консультация</h3>
+
+                <p>
+                    Подробный анализ поведения собаки и рекомендации.
+                </p>
+            </div>
+
+            <div class="price">90 BYN</div>
+
+        </div>
+
+        <!-- 2 -->
+        <div class="box service-box"
+        data-title="Обучение щенков"
+        data-text="Программа раннего обучения щенков направлена на формирование правильного поведения и устойчивой психики с первых месяцев жизни. Мы помогаем щенку адаптироваться к городской среде, людям, транспорту и другим животным. Во время занятий питомец изучает базовые команды, учится спокойно оставаться дома, правильно реагировать на раздражители и взаимодействовать с хозяином. Особое внимание уделяется мягкому и безопасному обучению без стресса для собаки."
+        data-price="100 BYN за занятие"
+        data-image="IMG/18.jpg">
+
+            <div class="service-number">02</div>
+
+            <div>
+                <h3>Обучение щенков</h3>
+
+                <p>
+                    Идеальный старт для воспитания спокойной собаки.
+                </p>
+            </div>
+
+            <div class="price">100 BYN</div>
+
+        </div>
+
+        <!-- 3 -->
+        <div class="box service-box"
+        data-title="Защитно-караульная служба"
+        data-text="Профессиональная подготовка собак по направлению защитно-караульной службы. Занятия помогают развить у питомца уверенность, выдержку, управляемость и навыки защиты владельца. Собака обучается правильной реакции на угрозу, задержанию нарушителя и контролируемой защите территории. Все тренировки проходят под контролем опытных кинологов с соблюдением техники безопасности и с учётом характера животного. Программа подходит для служебных и крупных пород собак."
+        data-price="220 BYN за занятие"
+        data-image="IMG/12.jpg">
+
+            <div class="service-number">03</div>
+
+            <div>
+                <h3>Защитно-караульная служба</h3>
+
+                <p>
+                    Подготовка собак для охраны и защиты владельца.
+                </p>
+            </div>
+
+            <div class="price">220 BYN</div>
+
+        </div>
+
+        <div class="box image-box">
+            <img src="IMG/8.jpg" alt="dog">
+        </div>
+
+        <!-- 4 -->
+        <div class="box service-box"
+        data-title="Общий курс дрессировки"
+        data-text="Комплексный курс дрессировки для формирования послушной и управляемой собаки. В программу входят основные команды: сидеть, лежать, рядом, место, ко мне, выдержка и правильное поведение на прогулках. Мы учим собаку сохранять концентрацию даже при отвлекающих факторах и спокойно вести себя в общественных местах. Курс подходит как для молодых собак, так и для взрослых питомцев, которым требуется корректировка поведения и повышение дисциплины."
+        data-price="120 BYN за занятие"
+        data-image="IMG/16.jpg">
+
+            <div class="service-number">04</div>
+
+            <div>
+                <h3>Общий курс дрессировки</h3>
+
+                <p>
+                    Формируем послушание и уверенное поведение.
+                </p>
+            </div>
+
+            <div class="price">120 BYN</div>
+
+        </div>
+
+        <!-- 5 -->
+        <div class="box service-box"
+        data-title="Городская собака"
+        data-text="Специальная программа для собак, живущих в городской среде. Во время занятий питомец учится спокойно реагировать на шум, транспорт, скопление людей, других животных и различные раздражители. Отрабатываются навыки безопасного поведения на улице, движение рядом без натяжения поводка, спокойное ожидание хозяина и уверенное поведение в общественных местах. Программа помогает сделать прогулки комфортными и безопасными."
+        data-price="140 BYN за занятие"
+        data-image="IMG/6.jpg">
+
+            <div class="service-number">05</div>
+
+            <div>
+                <h3>Городская собака</h3>
+
+                <p>
+                    Подготовка собаки к комфортной жизни в городе.
+                </p>
+            </div>
+
+            <div class="price">140 BYN</div>
+
+        </div>
+
+        <div class="box image-box">
+            <img src="IMG/7.jpg">
+        </div>
+
+        <!-- 6 -->
+        <div class="box service-box"
+        data-title="Коррекция поведения"
+        data-text="Индивидуальная работа с проблемным поведением собак. Мы помогаем справиться с агрессией, страхами, разрушительным поведением дома, постоянным лаем, гиперактивностью и другими сложностями. Перед началом занятий кинолог проводит анализ поведения питомца и определяет причины возникновения проблемы. После этого составляется персональный план коррекции с постепенной и безопасной проработкой поведения собаки."
+        data-price="150 BYN за занятие"
+        data-image="IMG/14.jpg">
+
+            <div class="service-number">06</div>
+
+            <div>
+                <h3>Коррекция поведения</h3>
+
+                <p>
+                    Помогаем избавиться от проблемного поведения.
+                </p>
+            </div>
+
+            <div class="price">150 BYN</div>
+
+        </div>
+
+        <!-- 7 -->
+        <div class="box service-box"
+        data-title="Подготовка собак к тестированию Т1"
+        data-text="Подготовка собак к успешному прохождению тестирования Т1 с учётом всех требований и нормативов. Во время занятий отрабатывается послушание, выдержка, правильная реакция на людей, животных и внешние раздражители. Кинолог помогает подготовить собаку как психологически, так и физически, уделяя внимание устойчивости нервной системы и уверенности питомца. Программа подбирается индивидуально в зависимости от уровня подготовки собаки."
+        data-price="Договорная"
+        data-image="IMG/19.jpg">
+
+            <div class="service-number">07</div>
+
+            <div>
+                <h3>Подготовка собак к тестированию Т1</h3>
+
+                <p>
+                    Подготовка к прохождению официального тестирования.
+                </p>
+            </div>
+
+            <div class="price">Договорная</div>
+
+        </div>
+
+        <!-- 8 -->
+        <div class="box service-box"
+        data-title="Перевозка собак"
+        data-text="Безопасная и комфортная перевозка собак по Минску и всей Беларуси. Для транспортировки используются оборудованные автомобили с системой фиксации и поддержанием комфортной температуры. Возможна перевозка питомцев на тренировки, выставки, в ветеринарные клиники, гостиницы и другие места. Во время поездки собака находится под присмотром специалиста, что помогает снизить стресс и обеспечить максимальный комфорт."
+        data-price="2.5 BYN за километр"
+        data-image="IMG/20.jpg">
+
+            <div class="service-number">08</div>
+
+            <div>
+                <h3>Перевозка собак</h3>
+
+                <p>
+                    Безопасная перевозка питомцев по Беларуси.
+                </p>
+            </div>
+
+            <div class="price">2.5 BYN / км</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="modal" id="modal">
+
+    <div class="modal-content service-modal">
+
+        <div class="modal-image">
+            <img id="modalImage" src="" alt="service">
+        </div>
+
+        <div class="modal-info">
+
+            <div class="close-modal" id="closeModal">×</div>
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalText"></p>
+
+            <div class="modal-bottom">
+
+                <div class="modal-price" id="modalPrice"></div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-column">
+
+            <h3>PIVOT POINT</h3>
+
+            <p>
+                Профессиональный центр
+                дрессировки собак с
+                опытными кинологами.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>Контакты</h4>
+
+            <a href="#">+375 29 999 99 99</a>
+            <a href="#">pivotpoint@gmail.com</a>
+            <a href="#">Minsk, Belarus</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>Социальные сети</h4>
+
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">TikTok</a>
+            <a href="#">Facebook</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>Навигация</h4>
+
+            <a href="proba.html">Главная</a>
+            <a href="services.html" class="active">Услуги</a>
+            <a href="personal.html">Персонал</a>
+            <a href="gallery.html">Галерея</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Pivot Point. Все права защищены.
+    </div>
+
+</footer>
+
+<script>
+
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+
+burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+
+const serviceBoxes = document.querySelectorAll('.service-box');
+
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalText = document.getElementById('modalText');
+const modalPrice = document.getElementById('modalPrice');
+const closeModal = document.getElementById('closeModal');
+const modalImage = document.getElementById('modalImage');
+
+const formModal = document.getElementById('formModal');
+
+const openFormBtnTop = document.getElementById('openFormBtnTop');
+const openFormBtnModal = document.getElementById('openFormBtnModal');
+
+const closeFormModal = document.getElementById('closeFormModal');
+
+serviceBoxes.forEach(box => {
+
+    box.addEventListener('click', () => {
+
+        modal.classList.add('active');
+
+        modalTitle.innerText = box.dataset.title;
+        modalText.innerText = box.dataset.text;
+        modalPrice.innerText = box.dataset.price;
+
+        modalImage.src = box.dataset.image;
+
+    });
+
+});
+
+closeModal.addEventListener('click', () => {
+    modal.classList.remove('active');
+});
+
+modal.addEventListener('click', (e) => {
+
+    if(e.target === modal){
+        modal.classList.remove('active');
+    }
+
+});
+
+openFormBtnTop.addEventListener('click', () => {
+    formModal.classList.add('active');
+});
+
+openFormBtnModal.addEventListener('click', () => {
+    formModal.classList.add('active');
+});
+
+closeFormModal.addEventListener('click', () => {
+    formModal.classList.remove('active');
+});
+
+formModal.addEventListener('click', (e) => {
+
+    if(e.target === formModal){
+        formModal.classList.remove('active');
+    }
+
+});
+
+</script>
+
+</body>
+</html>
